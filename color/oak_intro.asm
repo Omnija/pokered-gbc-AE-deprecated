@@ -12,9 +12,15 @@ ENDC
 GetRedPalID:
 	call ClearScreen
 IF GEN_2_GRAPHICS
+	; Adding Gender Colours
+	ld a, [wPlayerGender]
+	and a
+	jr z, .male
+	ld a, PAL_HEROF
+	jr .female
+.male
 	ld a, PAL_HERO
-ELSE
-	ld a, PAL_REDMON
+.female
 ENDC
 	jr GotPalID
 

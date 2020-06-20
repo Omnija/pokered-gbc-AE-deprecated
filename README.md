@@ -10,5 +10,7 @@ Making it more appealing to to choose 1 version over the other.
 
 
 [Credits](/docs/Credits.md)
+
 [Install](/docs/Install.md)
+
 [Features](/docs/Features.md)

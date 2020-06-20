@@ -479,10 +479,12 @@ SetPal_TitleScreen:
 	ld e,3
 	callba LoadSGBPalette
 
-IF GEN_2_GRAPHICS
+; Red/Blue's palette
+IF DEF(_RED)
 	ld d, PAL_HERO
-ELSE
-	ld d, PAL_REDMON
+ENDC
+IF DEF(_BLUE)
+	ld d, PAL_HERO
 ENDC
 	ld e,0
 	callba LoadSGBPalette_Sprite
@@ -831,8 +833,12 @@ SetPal_GameFreakIntro:
 
 ; Trainer card
 SetPal_TrainerCard:
+	ld a, [wPlayerGender]
+	ld b, a
+
 	ld a,2
 	ld [rSVBK],a
+	push bc
 	
 	ld d,PAL_MEWMON
 	ld e,0
@@ -848,20 +854,23 @@ SetPal_TrainerCard:
 	callba LoadSGBPalette
 
 	; Red's palette
-IF GEN_2_GRAPHICS
+	; Adding Green Colours
+	pop bc
+	ld a, b
+	and a
+	jr z, .male
+	ld d, PAL_HEROF
+	jr .female
+.male
 	ld d, PAL_HERO
-ELSE
-	ld d, PAL_REDMON
-ENDC
+.female
 	ld e,4
 	callba LoadSGBPalette
 
 	; Palette for border tiles
-IF DEF(_BLUE)
-	ld d, PAL_BLUEMON
-ELSE ; _RED
-	ld d, PAL_REDMON
-ENDC
+
+	ld d, PAL_HERO
+
 	ld e,5
 	callba LoadSGBPalette
 
@@ -928,6 +937,38 @@ SetPal_NameEntry:
 	ld [rSVBK],a
 	ret
 
+	; Adding Green Colours
+SetPal_GenderSelect:
+	ld a,2
+	ld [rSVBK],a
+	ld d,PAL_HERO
+	ld e,0
+	callba LoadSGBPalette
+
+	ld d, PAL_HEROF
+	ld e, 1
+	callba LoadSGBPalette
+
+	xor a
+	ld [W2_TileBasedPalettes],a
+	ld hl, W2_TilesetPaletteMap
+	ld bc, 20*18
+	call FillMemory
+
+	ld hl,W2_TilesetPaletteMap+2*20+7
+	ld a,1
+	ld b,10
+	ld c,5
+	call FillBox
+
+	ld a,1
+	ld [W2_ForceBGPUpdate],a ; Refresh palettes
+	ld a,3
+	ld [W2_StaticPaletteMapChanged],a
+
+	xor a
+	ld [rSVBK],a
+	ret
 
 ; Code for the pokemon in the titlescreen.
 ; There's no particular reason it needs to be in this bank.
