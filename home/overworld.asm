@@ -2011,7 +2011,8 @@ LoadWalkingPlayerSpriteGraphics::
     jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
-    ld de,SeelSprite
+    ;ld de,SeelSprite
+	ld de,LaprasSprite
     ld hl,vNPCSprites
     jr LoadPlayerSpriteGraphicsCommon
 

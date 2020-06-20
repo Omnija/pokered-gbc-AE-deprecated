@@ -2008,11 +2008,12 @@ _FileDataDestroyedText::
 	text "The file data is"
 	line "destroyed!"
 	prompt
-
-_WouldYouLikeToSaveText::
-	text "Would you like to"
-	line "SAVE the game?"
-	done
+	
+;Remove Save Confirmation
+;_WouldYouLikeToSaveText::
+	;text "Would you like to"
+	;line "SAVE the game?"
+	;done
 
 _GameSavedText::
 	text "<PLAYER> saved"

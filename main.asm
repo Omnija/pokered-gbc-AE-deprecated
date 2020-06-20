@@ -345,7 +345,10 @@ ClefairySprite:       INCBIN "gfx/sprites/clefairy.2bpp"
 AgathaSprite:         INCBIN "gfx/sprites/agatha.2bpp"
 BrunoSprite:          INCBIN "gfx/sprites/bruno.2bpp"
 LoreleiSprite:        INCBIN "gfx/sprites/lorelei.2bpp"
-SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
+; Relocated Seel Sprite to Pic 2
+;SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
+; Adding New Surf
+LaprasSprite:         INCBIN "gfx/sprites/lapras.2bpp"
 
 
 SECTION "Battle (BANK 5)", ROMX
@@ -734,6 +737,9 @@ GreenPicBack:        INCBIN "pic/gstrainer/yellowb.pic"
 ENDC
 
 OldManPic:          INCBIN "pic/gstrainer/oldman.pic"
+
+; Relocated Seel Sprite
+SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
 
 ; Adding Green
 IF DEF(_RED)

@@ -2290,8 +2290,9 @@ ItemUseTMHM:
 	ret z
 	ld a, [wcf91]
 	call IsItemHM
-	ret c
-	jp RemoveUsedItem
+	ret
+	;ret c
+	;jp RemoveUsedItem
 
 BootedUpTMText:
 	TX_FAR _BootedUpTMText
