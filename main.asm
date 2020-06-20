@@ -169,6 +169,10 @@ SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
 
+; Relocated Giovanni and Rocket
+GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
+RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
+
 
 SECTION "Graphics (BANK 4)", ROMX
 
@@ -212,7 +216,15 @@ PokedexTileGraphics:            INCBIN "gfx/pokedex.2bpp"
 PokedexTileGraphicsEnd:
 WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
 WorldMapTileGraphicsEnd:
+
+; Adding Red vs Blue Rival
+IF DEF(_RED)
 PlayerCharacterTitleGraphics:   INCBIN "gfx/player_title.2bpp"
+ENDC
+IF DEF(_BLUE)
+PlayerCharacterTitleGraphics:   INCBIN "gfx/playerB_title.2bpp"
+ENDC
+
 PlayerCharacterTitleGraphicsEnd:
 
 
@@ -223,12 +235,32 @@ INCLUDE "engine/menu/status_screen.asm"
 INCLUDE "engine/menu/party_menu.asm"
 
 IF GEN_2_GRAPHICS
+
+;Adding Green
+IF DEF(_RED)
 RedPicFront:: INCBIN "pic/gstrainer/red.pic"
+GreenPicFront:: INCBIN "pic/gstrainer/green.pic"
+ENDC
+IF DEF(_BLUE)
+RedPicFront:: INCBIN "pic/gstrainer/blue.pic"
+GreenPicFront:: INCBIN "pic/gstrainer/yellow.pic"
+ENDC
+
 rept 11 ; Padding
 	db 0
 endr
+
+;Adding Green
 ELSE
+IF DEF(_RED)
 RedPicFront:: INCBIN "pic/trainer/red.pic"
+GreenPicFront:: INCBIN "pic/trainer/green.pic"
+ENDC
+IF DEF(_BLUE)
+RedPicFront:: INCBIN "pic/trainer/blue.pic"
+GreenPicFront:: INCBIN "pic/trainer/yellow.pic"
+ENDC
+
 ENDC
 
 ShrinkPic1::  INCBIN "pic/trainer/shrink1.pic"
@@ -254,9 +286,28 @@ ENDC
 
 SECTION "NPC Sprites 2", ROMX ; BANK $05
 
-RedCyclingSprite:     INCBIN "gfx/sprites/cycling.2bpp"
+; Adding Green
+IF DEF(_RED)
 RedSprite:            INCBIN "gfx/sprites/red.2bpp"
-BlueSprite:           INCBIN "gfx/sprites/blue.2bpp"
+RedCyclingSprite:     INCBIN "gfx/sprites/redcycling.2bpp"
+GreenSprite:           INCBIN "gfx/sprites/green.2bpp"
+GreenCyclingSprite:    INCBIN "gfx/sprites/greencycling.2bpp"
+ENDC
+IF DEF(_BLUE)
+RedSprite:            INCBIN "gfx/sprites/blue.2bpp"
+RedCyclingSprite:     INCBIN "gfx/sprites/bluecycling.2bpp"
+GreenSprite:           INCBIN "gfx/sprites/yellow.2bpp"
+GreenCyclingSprite:    INCBIN "gfx/sprites/yellowcycling.2bpp"
+ENDC
+
+; Adding Red vs Blue Rival
+IF DEF(_RED)
+BlueSprite:           INCBIN "gfx/sprites/rivalr.2bpp"
+ENDC
+IF DEF(_BLUE)
+BlueSprite:           INCBIN "gfx/sprites/rivalb.2bpp"
+ENDC
+
 OakSprite:            INCBIN "gfx/sprites/oak.2bpp"
 BugCatcherSprite:     INCBIN "gfx/sprites/bug_catcher.2bpp"
 SlowbroSprite:        INCBIN "gfx/sprites/slowbro.2bpp"
@@ -277,8 +328,9 @@ SailorSprite:         INCBIN "gfx/sprites/sailor.2bpp"
 CookSprite:           INCBIN "gfx/sprites/cook.2bpp"
 BikeShopGuySprite:    INCBIN "gfx/sprites/bike_shop_guy.2bpp"
 MrFujiSprite:         INCBIN "gfx/sprites/mr_fuji.2bpp"
-GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
-RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
+
+; Relocated Giovanni and Rocket to NPC SPRITES 1
+
 MediumSprite:         INCBIN "gfx/sprites/medium.2bpp"
 WaiterSprite:         INCBIN "gfx/sprites/waiter.2bpp"
 ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
@@ -670,8 +722,30 @@ PidgeotPicFront:    INCBIN "pic/gsmon/pidgeot.pic"
 PidgeotPicBack:     INCBIN "pic/gsmonback/pidgeotb.pic"
 StarmiePicFront:    INCBIN "pic/gsmon/starmie.pic"
 StarmiePicBack:     INCBIN "pic/gsmonback/starmieb.pic"
-RedPicBack:         INCBIN "pic/gstrainer/redb.pic"
+
+; Adding Green
+IF DEF(_RED)
+RedPicBack::           INCBIN "pic/gstrainer/redb.pic"
+GreenPicBack:        INCBIN "pic/gstrainer/Greenb.pic"
+ENDC
+IF DEF(_BLUE)
+RedPicBack::           INCBIN "pic/gstrainer/blueb.pic"
+GreenPicBack:        INCBIN "pic/gstrainer/yellowb.pic"
+ENDC
+
 OldManPic:          INCBIN "pic/gstrainer/oldman.pic"
+
+; Adding Green
+IF DEF(_RED)
+GreenFishingTilesFront: INCBIN "gfx/Green_fishing_tile_front.2bpp"
+GreenFishingTilesBack:  INCBIN "gfx/Green_fishing_tile_back.2bpp"
+GreenFishingTilesSide:  INCBIN "gfx/Green_fishing_tile_side.2bpp"
+ENDC
+IF DEF(_BLUE)
+GreenFishingTilesFront: INCBIN "gfx/yellow_fishing_tile_front.2bpp"
+GreenFishingTilesBack:  INCBIN "gfx/yellow_fishing_tile_back.2bpp"
+GreenFishingTilesSide:  INCBIN "gfx/yellow_fishing_tile_side.2bpp"
+ENDC
 
 GastlyPicFront:     INCBIN "pic/gsmon/gastly.pic"
 GastlyPicBack:      INCBIN "pic/gsmonback/gastlyb.pic"
@@ -692,7 +766,17 @@ PidgeotPicFront:    INCBIN "pic/bmon/pidgeot.pic"
 PidgeotPicBack:     INCBIN "pic/monback/pidgeotb.pic"
 StarmiePicFront:    INCBIN "pic/bmon/starmie.pic"
 StarmiePicBack:     INCBIN "pic/monback/starmieb.pic"
-RedPicBack:         INCBIN "pic/trainer/redb.pic"
+
+; Adding Green
+IF DEF(_RED)
+RedPicBack::           INCBIN "pic/trainer/redb.pic"
+GreenPicBack:        INCBIN "pic/trainer/Greenb.pic"
+ENDC
+IF DEF(_BLUE)
+RedPicBack::           INCBIN "pic/trainer/blueb.pic"
+GreenPicBack:        INCBIN "pic/trainer/yellowb.pic"
+ENDC
+
 OldManPic:          INCBIN "pic/trainer/oldman.pic"
 
 GastlyPicFront:     INCBIN "pic/bmon/gastly.pic"
@@ -1143,7 +1227,19 @@ JugglerPic::       INCBIN "pic/gstrainer/juggler.pic"
 TamerPic::         INCBIN "pic/gstrainer/tamer.pic"
 BirdKeeperPic::    INCBIN "pic/gstrainer/birdkeeper.pic"
 BlackbeltPic::     INCBIN "pic/gstrainer/blackbelt.pic"
-Rival1Pic::        INCBIN "pic/gstrainer/rival1.pic"
+
+; Adding Red vs Blue Rival
+IF DEF(_RED)
+Rival1Pic::        INCBIN "pic/gstrainer/rival1r.pic"
+Rival2Pic::        INCBIN "pic/gstrainer/rival2r.pic"
+Rival3Pic::        INCBIN "pic/gstrainer/rival3r.pic"
+ENDC
+IF DEF(_BLUE)
+Rival1Pic::        INCBIN "pic/gstrainer/rival1b.pic"
+Rival2Pic::        INCBIN "pic/gstrainer/rival2b.pic"
+Rival3Pic::        INCBIN "pic/gstrainer/rival3b.pic"
+ENDC
+
 ProfOakPic::       INCBIN "pic/gstrainer/prof.oak.pic"
 ChiefPic::
 ScientistPic::     INCBIN "pic/gstrainer/scientist.pic"
@@ -1160,8 +1256,6 @@ KogaPic::          INCBIN "pic/gstrainer/koga.pic"
 BlainePic::        INCBIN "pic/gstrainer/blaine.pic"
 SabrinaPic::       INCBIN "pic/gstrainer/sabrina.pic"
 GentlemanPic::     INCBIN "pic/gstrainer/gentleman.pic"
-Rival2Pic::        INCBIN "pic/gstrainer/rival2.pic"
-Rival3Pic::        INCBIN "pic/gstrainer/rival3.pic"
 LoreleiPic::       INCBIN "pic/gstrainer/lorelei.pic"
 ChannelerPic::     INCBIN "pic/gstrainer/channeler.pic"
 AgathaPic::        INCBIN "pic/gstrainer/agatha.pic"
@@ -1192,7 +1286,19 @@ JugglerPic::       INCBIN "pic/trainer/juggler.pic"
 TamerPic::         INCBIN "pic/trainer/tamer.pic"
 BirdKeeperPic::    INCBIN "pic/trainer/birdkeeper.pic"
 BlackbeltPic::     INCBIN "pic/trainer/blackbelt.pic"
-Rival1Pic::        INCBIN "pic/trainer/rival1.pic"
+
+; Adding Red vs Blue Rival
+IF DEF(_RED)
+Rival1Pic::        INCBIN "pic/trainer/rival1r.pic"
+Rival2Pic::        INCBIN "pic/trainer/rival2r.pic"
+Rival3Pic::        INCBIN "pic/trainer/rival3r.pic"
+ENDC
+IF DEF(_BLUE)
+Rival1Pic::        INCBIN "pic/trainer/rival1b.pic"
+Rival2Pic::        INCBIN "pic/trainer/rival2b.pic"
+Rival3Pic::        INCBIN "pic/trainer/rival3b.pic"
+ENDC
+
 ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
 ChiefPic::
 ScientistPic::     INCBIN "pic/trainer/scientist.pic"
@@ -1209,8 +1315,6 @@ KogaPic::          INCBIN "pic/trainer/koga.pic"
 BlainePic::        INCBIN "pic/trainer/blaine.pic"
 SabrinaPic::       INCBIN "pic/trainer/sabrina.pic"
 GentlemanPic::     INCBIN "pic/trainer/gentleman.pic"
-Rival2Pic::        INCBIN "pic/trainer/rival2.pic"
-Rival3Pic::        INCBIN "pic/trainer/rival3.pic"
 LoreleiPic::       INCBIN "pic/trainer/lorelei.pic"
 ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
 AgathaPic::        INCBIN "pic/trainer/agatha.pic"

@@ -381,18 +381,37 @@ IsPlayerStandingOnWarpPadOrHole:
 	db INTERIOR, $55, 1 ; warp pad
 	db $FF
 
+	; Adding Green
 FishingAnim:
-	ld c, 10
-	call DelayFrames
-	ld hl, wd736
-	set 6, [hl] ; reserve the last 4 OAM entries
-	ld de, RedSprite
-	ld hl, vNPCSprites
-	lb bc, BANK(RedSprite), $c
-	call CopyVideoData
-	ld a, $4
-	ld hl, RedFishingTiles
-	call LoadAnimSpriteGfx
+    ld c, 10
+    call DelayFrames
+    ld hl, wd736
+    set 6, [hl] ; reserve the last 4 OAM entries
+    ld a, [wPlayerGender] ; added gender check
+    and a      ; added gender check
+    jr z, .BoySpriteLoad
+    ld de, GreenSprite
+    ld hl, vNPCSprites
+    ld bc, (BANK(GreenSprite) << 8) + $0c
+    jr .KeepLoadingSpriteStuff
+.BoySpriteLoad
+    ld de, RedSprite
+    ld hl, vNPCSprites
+    lb bc, BANK(RedSprite), $c
+.KeepLoadingSpriteStuff
+    call CopyVideoData
+    ld a, [wPlayerGender] ; added gender check
+    and a      ; added gender check
+    jr z, .BoyTiles ; skip loading Green's stuff if you're Red
+    ld a, $4
+    ld hl, GreenFishingTiles
+    jr .ContinueRoutine ; go back to main routine after loading Green's stuff
+.BoyTiles ; alternately, load Red's stuff
+    ld a, $4
+    ld hl, RedFishingTiles
+.ContinueRoutine
+    call LoadAnimSpriteGfx
+	
 	ld a, [wSpriteStateData1 + 2]
 	ld c, a
 	ld b, $0
@@ -501,6 +520,24 @@ RedFishingTiles:
 	dw RedFishingRodTiles
 	db 3, BANK(RedFishingRodTiles)
 	dw vNPCSprites2 + $7d0
+	
+	; Adding Green
+GreenFishingTiles: ; newly added table of Green's sprites
+    dw GreenFishingTilesFront
+    db 2, BANK(GreenFishingTilesFront)
+    dw vNPCSprites + $20
+
+    dw GreenFishingTilesBack
+    db 2, BANK(GreenFishingTilesBack)
+    dw vNPCSprites + $60
+
+    dw GreenFishingTilesSide
+    db 2, BANK(GreenFishingTilesSide)
+    dw vNPCSprites + $a0
+
+    dw RedFishingRodTiles
+    db 3, BANK(RedFishingRodTiles)
+    dw vNPCSprites2 + $7d0
 
 _HandleMidJump:
 	ld a, [wPlayerJumpingYScreenCoordsIndex]

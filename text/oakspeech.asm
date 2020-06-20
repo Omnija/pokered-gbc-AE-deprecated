@@ -53,3 +53,9 @@ _OakSpeechText3::
 	cont "with #MON"
 	cont "awaits! Let's go!"
 	done
+
+	; Adding Green
+_BoyGirlText::
+    text "Play as a boy, or"
+    line "as a girl?"
+    done

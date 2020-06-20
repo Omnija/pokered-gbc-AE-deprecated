@@ -1,31 +1,54 @@
+	; Adding Green
 ChoosePlayerName:
-	call OakSpeechSlidePicRight
-	ld de, DefaultNamesPlayer
-	call DisplayIntroNameTextBox
-	ld a, [wCurrentMenuItem]
-	and a
-	jr z, .customName
-	ld hl, DefaultNamesPlayerList
-	call GetDefaultName
-	ld de, wPlayerName
-	call OakSpeechSlidePicLeft
-	jr .done
+    call OakSpeechSlidePicRight
+    ld a, [wPlayerGender] ; Added gender check
+    and a
+    jr nz, .AreGirl ; Skip to girl names if you are a girl instead
+    ld de, DefaultNamesPlayer
+    call DisplayIntroNameTextBox
+    ld a, [wCurrentMenuItem]
+    and a
+    jr z, .customName
+    ld hl, DefaultNamesPlayerList
+    call GetDefaultName
+    ld de, wPlayerName
+    call OakSpeechSlidePicLeft
+    jr .done
+.AreGirl ; Copy of the boy naming routine, just with girl's names
+    ld de, DefaultNamesGirl
+    call DisplayIntroNameTextBox
+    ld a, [wCurrentMenuItem]
+    and a
+    jr z, .customName
+    ld hl, DefaultNamesGirlList
+    call GetDefaultName
+    ld de, wPlayerName
+    call OakSpeechSlidePicLeft
+    jr .done ; End of new Girl Names routine
+	
+	; Adding Green
 .customName
-	ld hl, wPlayerName
-	xor a ; NAME_PLAYER_SCREEN
-	ld [wNamingScreenType], a
-	call DisplayNamingScreen
-	ld a, [wcf4b]
-	cp "@"
-	jr z, .customName
-	call ClearScreen
-	call Delay3
-	ld de, RedPicFront
-	ld b, BANK(RedPicFront)
-	call IntroDisplayPicCenteredOrUpperRight
+    ld hl, wPlayerName
+    xor a ; NAME_PLAYER_SCREEN
+    ld [wNamingScreenType], a
+    call DisplayNamingScreen
+    ld a, [wcf4b]
+    cp "@"
+    jr z, .customName
+    call ClearScreen
+    call Delay3
+    ld de, RedPicFront
+    ld b, BANK(RedPicFront)
+    ld a, [wPlayerGender] ; Added gender check
+    and a      ; Added gender check
+    jr z, .AreBoy3
+    ld de, GreenPicFront
+    ld b, BANK(GreenPicFront)
+.AreBoy3
+    call IntroDisplayPicCenteredOrUpperRight
 .done
-	ld hl, YourNameIsText
-	jp PrintText
+    ld hl, YourNameIsText
+    jp PrintText
 
 YourNameIsText:
 	TX_FAR _YourNameIsText
@@ -192,30 +215,45 @@ DefaultNamesPlayer:
 	db   "NEW NAME"
 	next "RED"
 	next "ASH"
-	next "JACK"
+	next "RYU"
 	db   "@"
+	
+	;Adding Green
+DefaultNamesGirl:
+    db   "NEW NAME"
+    next "GREEN"
+    next "LEAF"
+    next "AMY"
+    db   "@"
 
 DefaultNamesRival:
 	db   "NEW NAME"
 	next "BLUE"
 	next "GARY"
-	next "JOHN"
+	next "KEN"
 	db   "@"
 ENDC
-
 IF DEF(_BLUE)
 DefaultNamesPlayer:
 	db   "NEW NAME"
 	next "BLUE"
 	next "GARY"
-	next "JOHN"
+	next "KEN"
 	db   "@"
+	
+	; Adding Green
+DefaultNamesGirl:
+    db   "NEW NAME"
+    next "YELLOW"
+    next "GOLDY"
+    next "LANE"
+    db   "@"
 
 DefaultNamesRival:
 	db   "NEW NAME"
 	next "RED"
 	next "ASH"
-	next "JACK"
+	next "RYU"
 	db   "@"
 ENDC
 
@@ -248,24 +286,40 @@ DefaultNamesPlayerList:
 	db "NEW NAME@"
 	db "RED@"
 	db "ASH@"
-	db "JACK@"
+	db "RYU@"
+	
+	; Adding Green
+DefaultNamesGirlList:
+    db "NEW NAME@"
+    db "GREEN@"
+    db "LEAF@"
+    db "AMY@"
+	
 DefaultNamesRivalList:
 	db "NEW NAME@"
 	db "BLUE@"
 	db "GARY@"
-	db "JOHN@"
+	db "KEN@"
 ENDC
 IF DEF(_BLUE)
 DefaultNamesPlayerList:
 	db "NEW NAME@"
 	db "BLUE@"
 	db "GARY@"
-	db "JOHN@"
+	db "KEN@"
+	
+	; Adding Green
+DefaultNamesGirlList:
+    db "NEW NAME@"
+    db "YELLOW@"
+    db "GOLDY@"
+    db "LANE@"
+	
 DefaultNamesRivalList:
 	db "NEW NAME@"
 	db "RED@"
 	db "ASH@"
-	db "JACK@"
+	db "RYU@"
 ENDC
 
 TextTerminator_6b20:

@@ -193,7 +193,7 @@ ROMX $1B
 ROMX $1C
 	org $4000
 	"bank1C"
-	org $4a69
+	org $4b69 ; edited from a to b
 	"BattleTransition_BlackScreen"
 	org $5fb6
 	"InitPartyMenuBlkPacket"

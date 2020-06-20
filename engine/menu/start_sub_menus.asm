@@ -521,10 +521,17 @@ StartMenu_TrainerInfo:
 	jp RedisplayStartMenu
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
+	; Adding Green
 DrawTrainerInfo:
-	ld de, RedPicFront
-	lb bc, BANK(RedPicFront), $01
-	predef DisplayPicCenteredOrUpperRight
+    ld de,RedPicFront
+    lb bc, BANK(RedPicFront), $01
+    ld a, [wPlayerGender]
+    and a
+    jr z, .AreBoy
+    ld de, GreenPicFront
+    lb bc, BANK(GreenPicFront), $01
+.AreBoy
+    predef DisplayPicCenteredOrUpperRight
 	call DisableLCD
 	coord hl, 0, 2
 	ld a, " "

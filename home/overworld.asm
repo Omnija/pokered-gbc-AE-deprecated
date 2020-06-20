@@ -1999,19 +1999,30 @@ RunMapScript::
 .return
 	ret
 
+	; Adding Green
 LoadWalkingPlayerSpriteGraphics::
-	ld de, RedSprite
-	ld hl, vNPCSprites
-	jr LoadPlayerSpriteGraphicsCommon
+    ld de,RedSprite
+    ld a, [wPlayerGender]
+    and a
+    jr z, .AreGuy1
+    ld de,GreenSprite
+.AreGuy1
+    ld hl,vNPCSprites
+    jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
-	ld de, SeelSprite
-	ld hl, vNPCSprites
-	jr LoadPlayerSpriteGraphicsCommon
+    ld de,SeelSprite
+    ld hl,vNPCSprites
+    jr LoadPlayerSpriteGraphicsCommon
 
 LoadBikePlayerSpriteGraphics::
-	ld de, RedCyclingSprite
-	ld hl, vNPCSprites
+    ld de,RedCyclingSprite
+    ld a, [wPlayerGender]
+    and a
+    jr z, .AreGuy2
+    ld de,GreenCyclingSprite
+.AreGuy2
+    ld hl,vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::
 	push de
