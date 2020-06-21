@@ -1215,7 +1215,11 @@ OaksLabText25:
 
 OaksLabText26:
 	TX_FAR _OaksLabText26
-	db "@"
+	db $11 ; play received item sound
+	TX_ASM
+	lb bc, POKE_BALL,5
+	call GiveItem
+	jp TextScriptEnd
 
 OaksLabText27:
 	TX_FAR _OaksLabText27

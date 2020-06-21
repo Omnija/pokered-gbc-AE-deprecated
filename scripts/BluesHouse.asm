@@ -37,8 +37,14 @@ BluesHouseText1:
 .GiveMap
 	ld hl, DaisyOfferMapText
 	call PrintText
+	lb bc, EXP_ALL, 1 
+	call GiveItem
+	
+	and a
+	jr z, .continue
 	lb bc, TOWN_MAP, 1
 	call GiveItem
+.continue
 	jr nc, .BagFull
 	ld a, HS_TOWN_MAP
 	ld [wMissableObjectIndex], a

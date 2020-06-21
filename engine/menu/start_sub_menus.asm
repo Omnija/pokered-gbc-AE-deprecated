@@ -300,122 +300,125 @@ ItemMenuLoop:
 	call RunDefaultPaletteCommand
 
 StartMenu_Item:
-	ld a, [wLinkState]
+	ld a,[wLinkState]
 	dec a ; is the player in the Colosseum or Trade Centre?
-	jr nz, .notInCableClubRoom
-	ld hl, CannotUseItemsHereText
+	jr nz,.notInCableClubRoom
+	ld hl,CannotUseItemsHereText
 	call PrintText
 	jr .exitMenu
 .notInCableClubRoom
-	ld bc, wNumBagItems
-	ld hl, wListPointer
-	ld a, c
-	ld [hli], a
-	ld [hl], b ; store item bag pointer in wListPointer (for DisplayListMenuID)
+	ld bc,wNumBagItems
+	ld hl,wListPointer
+	ld a,c
+	ld [hli],a
+	ld [hl],b ; store item bag pointer in wListPointer (for DisplayListMenuID)
 	xor a
-	ld [wPrintItemPrices], a
-	ld a, ITEMLISTMENU
-	ld [wListMenuID], a
-	ld a, [wBagSavedMenuItem]
-	ld [wCurrentMenuItem], a
+	ld [wPrintItemPrices],a
+	ld a,ITEMLISTMENU
+	ld [wListMenuID],a
+	ld a,[wBagSavedMenuItem]
+	ld [wCurrentMenuItem],a
 	call DisplayListMenuID
-	ld a, [wCurrentMenuItem]
-	ld [wBagSavedMenuItem], a
-	jr nc, .choseItem
+	ld a,[wCurrentMenuItem]
+	ld [wBagSavedMenuItem],a
+	jr nc,.choseItem
 .exitMenu
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
-	call LoadTextBoxTilePatterns
-	call UpdateSprites
+    call LoadTextBoxTilePatterns
+    call UpdateSprites
 	jp RedisplayStartMenu
 .choseItem
 ; erase menu cursor (blank each tile in front of an item name)
-	ld a, " "
+	ld a," "
 	Coorda 5, 4
 	Coorda 5, 6
 	Coorda 5, 8
 	Coorda 5, 10
 	call PlaceUnfilledArrowMenuCursor
 	xor a
-	ld [wMenuItemToSwap], a
-	ld a, [wcf91]
-	cp BICYCLE
-	jp z, .useOrTossItem
+	ld [wMenuItemToSwap],a
+	ld a,[wcf91]
+	cp a,BICYCLE
+	jp z,.useOrTossItem
 .notBicycle1
-	ld a, USE_TOSS_MENU_TEMPLATE
-	ld [wTextBoxID], a
+	ld a,USE_TOSS_MENU_TEMPLATE
+	ld [wTextBoxID],a
 	call DisplayTextBoxID
-	ld hl, wTopMenuItemY
-	ld a, 11
-	ld [hli], a ; top menu item Y
-	ld a, 14
-	ld [hli], a ; top menu item X
+	ld hl,wTopMenuItemY
+	ld a,11
+	ld [hli],a ; top menu item Y
+	ld a,14
+	ld [hli],a ; top menu item X
 	xor a
-	ld [hli], a ; current menu item ID
+	ld [hli],a ; current menu item ID
 	inc hl
-	inc a ; a = 1
-	ld [hli], a ; max menu item ID
-	ld a, A_BUTTON | B_BUTTON
-	ld [hli], a ; menu watched keys
+	inc a
+	inc a ; a = 2
+	ld [hli],a ; max menu item ID
+	ld a,A_BUTTON | B_BUTTON
+	ld [hli],a ; menu watched keys
 	xor a
-	ld [hl], a ; old menu item id
+	ld [hl],a ; old menu item id
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
-	bit 1, a ; was the B button pressed?
-	jr z, .useOrTossItem
+	bit 1,a ; was the B button pressed?
+	jr z,.useOrTossItem
 	jp ItemMenuLoop
 .useOrTossItem ; if the player made the choice to use or toss the item
-	ld a, [wcf91]
-	ld [wd11e], a
+	ld a,[wcf91]
+	ld [wd11e],a
 	call GetItemName
 	call CopyStringToCF4B ; copy name to wcf4b
-	ld a, [wcf91]
-	cp BICYCLE
-	jr nz, .notBicycle2
-	ld a, [wd732]
-	bit 5, a
-	jr z, .useItem_closeMenu
-	ld hl, CannotGetOffHereText
+	ld a,[wcf91]
+	cp a,BICYCLE
+	jr nz,.notBicycle2
+	ld a,[wd732]
+	bit 5,a
+	jr z,.useItem_closeMenu
+	ld hl,CannotGetOffHereText
 	call PrintText
 	jp ItemMenuLoop
 .notBicycle2
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .tossItem
-; use item
-	ld [wPseudoItemID], a ; a must be 0 due to above conditional jump
-	ld a, [wcf91]
-	cp HM_01
-	jr nc, .useItem_partyMenu
-	ld hl, UsableItems_CloseMenu
-	ld de, 1
+	ld a,[wCurrentMenuItem]
+	cp a, 2
+	jr z, .tossItem
+	cp a, 1
+	jr z, .infoItem
+.useItem
+	ld [wPseudoItemID],a
+	ld a,[wcf91]
+	cp a,HM_01
+	jr nc,.useItem_partyMenu
+	ld hl,UsableItems_CloseMenu
+	ld de,1
 	call IsInArray
-	jr c, .useItem_closeMenu
-	ld a, [wcf91]
-	ld hl, UsableItems_PartyMenu
-	ld de, 1
+	jr c,.useItem_closeMenu
+	ld a,[wcf91]
+	ld hl,UsableItems_PartyMenu
+	ld de,1
 	call IsInArray
-	jr c, .useItem_partyMenu
+	jr c,.useItem_partyMenu
 	call UseItem
 	jp ItemMenuLoop
 .useItem_closeMenu
 	xor a
-	ld [wPseudoItemID], a
+	ld [wPseudoItemID],a
 	call UseItem
-	ld a, [wActionResultOrTookBattleTurn]
+	ld a,[wActionResultOrTookBattleTurn]
 	and a
-	jp z, ItemMenuLoop
+	jp z,ItemMenuLoop
 	jp CloseStartMenu
 .useItem_partyMenu
-	ld a, [wUpdateSpritesEnabled]
+	ld a,[wUpdateSpritesEnabled]
 	push af
 	call UseItem
-	ld a, [wActionResultOrTookBattleTurn]
-	cp $02
-	jp z, .partyMenuNotDisplayed
+	ld a,[wActionResultOrTookBattleTurn]
+	cp a,$02
+	jp z,.partyMenuNotDisplayed
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
 	pop af
-	ld [wUpdateSpritesEnabled], a
+	ld [wUpdateSpritesEnabled],a
 	jp StartMenu_Item
 .partyMenuNotDisplayed
 	pop af
@@ -436,6 +439,14 @@ StartMenu_Item:
 	ld hl, wNumBagItems
 	call TossItem
 .tossZeroItems
+	jp ItemMenuLoop
+	
+; Adding Item Info
+.infoItem
+	ld a,[wcf91]
+	ld hl, DisplayItemDescription
+	ld b, Bank(DisplayItemDescription)
+	call Bankswitch
 	jp ItemMenuLoop
 
 CannotUseItemsHereText:

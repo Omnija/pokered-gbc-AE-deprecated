@@ -2717,3 +2717,4 @@ ENDC
 
 SECTION "field moves", ROMX,BANK[$38]
 INCLUDE "engine/overworld/automatic_repel.asm"
+INCLUDE "engine/menu/item_descriptions.asm"

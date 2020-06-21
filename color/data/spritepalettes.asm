@@ -164,10 +164,19 @@ SpritePalettesPokecenter: ; Taken from pokemon GSC.
 
 ; Red Overworld Sprite
 ; PAL_OW_RED - Better Colours
+IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,24,08
 	RGB 22,07,08
 	RGB 00,00,00
+ENDC
+
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+ENDC
 
 ; Blue Overworld Sprite
 ; PAL_OW_BLUE - Better Colours

@@ -1,5 +1,4 @@
 INCLUDE "charmap.asm"
-
 INCLUDE "constants/text_constants.asm"
 
 TEXT_1  EQU $20
@@ -3195,12 +3194,14 @@ _UsedCutText::
 	line "away with CUT!"
 	prompt
 
-
 SECTION "Pokedex Text", ROMX ; BANK $2b
 
 INCLUDE "text/pokedex.asm"
 
-
 SECTION "Move Names", ROMX ; BANK $2c
 
 INCLUDE "text/move_names.asm"
+
+SECTION "Item Text", ROMX ; BANK $2d
+
+INCLUDE "text/item_descriptions.asm"
