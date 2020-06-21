@@ -101,7 +101,12 @@ ColorOverworldSprite:
 .playerSprite
 	ld a, [wPlayerGender]
 	and a
+IF DEF (_RED)
 	ld a, SPR_PAL_ORANGE
+ENDC
+IF DEF (_BLUE)
+	ld a, SPR_PAL_EMOJI
+ENDC
 	jr z, .continue
 	ld a, SPR_PAL_GREEN
 

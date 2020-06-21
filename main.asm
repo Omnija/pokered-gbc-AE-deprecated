@@ -2715,3 +2715,5 @@ MarowakPicFront:     INCBIN "pic/bmon/marowak.pic"
 MarowakPicBack:      INCBIN "pic/monback/marowakb.pic"
 ENDC
 
+SECTION "field moves", ROMX,BANK[$38]
+INCLUDE "engine/overworld/automatic_repel.asm"

@@ -1321,13 +1321,9 @@ PlayerBlackedOutText::
 	db "@"
 
 DisplayRepelWoreOffText::
-	ld hl, RepelWoreOffText
-	call PrintText
-	jp AfterDisplayingTextID
-
-RepelWoreOffText::
-	TX_FAR _RepelWoreOffText
-	db "@"
+	; BW Repel System
+	callba _DisplayRepelWoreOffText
+	jp HoldTextDisplayOpen
 
 INCLUDE "engine/menu/start_menu.asm"
 

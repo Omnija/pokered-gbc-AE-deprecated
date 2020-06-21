@@ -2,20 +2,11 @@ SpritePalettes: ; Taken from pokemon GSC.
 
 ; Red Overworld Sprite
 ; PAL_OW_RED - Better Colours
-IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,24,08
 	RGB 22,07,08
 	RGB 00,00,00
-ENDC
 
-IF DEF (_BLUE)
-	RGB 31,31,31
-	RGB 31,24,08
-	RGB 08,12,25
-	RGB 00,00,00
-ENDC
-	
 ; Blue Overworld Sprite
 ; PAL_OW_BLUE - Better Colours
 IF DEF (_RED)
@@ -24,6 +15,7 @@ IF DEF (_RED)
 	RGB 08,12,25
 	RGB 00,00,00
 ENDC
+	
 IF DEF (_BLUE)
 	RGB 31,31,31
 	RGB 31,24,08
@@ -31,9 +23,9 @@ IF DEF (_BLUE)
 	RGB 00,00,00
 ENDC
 	
-IF DEF (_RED)
 ; Green Overworld Sprite
 ; PAL_OW_Green - Better Colours
+IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,24,08
 	RGB 08,18,18
@@ -60,10 +52,20 @@ ENDC
 	RGB 0,0,0
 
 ; PAL_OW_EMOJI
+; Attemption at fixing Blue
+IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,31,31
 	RGB 13,13,13
 	RGB 0,0,0
+ENDC	
+	
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+ENDC
 
 ; PAL_OW_TREE
 	RGB 22,31,10
@@ -129,23 +131,45 @@ SpritePalettesNite: ; Taken from pokemon GSC.
 
 SpritePalettesPokecenter: ; Taken from pokemon GSC.
 
-; PAL_OW_RED
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 31,7,1
-	RGB 0,0,0
 
-; PAL_OW_BLUE
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 10,9,31
-	RGB 0,0,0
+; Red Overworld Sprite
+; PAL_OW_RED - Better Colours
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 22,07,08
+	RGB 00,00,00
 
-; PAL_OW_GREEN
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 7,23,3
-	RGB 0,0,0
+; Blue Overworld Sprite
+; PAL_OW_BLUE - Better Colours
+IF DEF (_RED)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+ENDC
+	
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 22,07,08
+	RGB 00,00,00
+ENDC
+	
+; Green Overworld Sprite
+; PAL_OW_Green - Better Colours
+IF DEF (_RED)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,18,18
+	RGB 00,00,00
+ENDC
+
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 25,23,07
+	RGB 00,00,00
+ENDC
 
 ; PAL_OW_BROWN
 	RGB 27,31,27
@@ -154,16 +178,28 @@ SpritePalettesPokecenter: ; Taken from pokemon GSC.
 	RGB 0,0,0
 
 ; Heal Machine pokeballs and screen
+
 	RGB 27,31,27
 	RGB 31,19,10
 	RGB 31,7,1
-	RGB 0,0,0
+	RGB 0,0,0,0
+
 
 ; PAL_OW_EMOJI
+; Attemption at fixing Blue
+IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,31,31
 	RGB 13,13,13
 	RGB 0,0,0
+ENDC	
+	
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+ENDC
 
 ; PAL_OW_TREE
 	RGB 22,31,10

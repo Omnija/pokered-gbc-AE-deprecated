@@ -8,3 +8,6 @@
 - Removed Save Confirmation
 - Artificial Save Delay
 - Re-Usable TM's
+- Running Shoes
+- BW/2 Repel System
+- PokeCenter (Quicker Healing)
