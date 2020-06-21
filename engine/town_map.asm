@@ -470,7 +470,15 @@ WriteAsymmetricMonPartySpriteOAM:
 	ld [hli], a
 	inc a
 	ld [wOAMBaseTile], a
-	xor a
+	
+	; Adding Green to Town Map
+	ld a, [wPlayerGender]
+	and a ; Are you a boy? Or a girl?
+	ld a, PAL_OW_GREEN
+	jr nz, .gotPal
+	xor a ; ld a, PAL_OW_RED
+.gotPal
+
 	ld [hli], a
 	inc d
 	ld a, 8

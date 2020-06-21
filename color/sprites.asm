@@ -98,17 +98,14 @@ ColorOverworldSprite:
 	ld a,[de]		; Get the picture ID's palette
 	jr .continue
 
+; Adding Green
 .playerSprite
 	ld a, [wPlayerGender]
 	and a
-IF DEF (_RED)
-	ld a, SPR_PAL_ORANGE
-ENDC
-IF DEF (_BLUE)
-	ld a, SPR_PAL_EMOJI
-ENDC
+	ld a, PAL_OW_RED
+
 	jr z, .continue
-	ld a, SPR_PAL_GREEN
+	ld a, PAL_OW_GREEN
 
 
 .continue

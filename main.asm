@@ -743,9 +743,9 @@ SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
 
 ; Adding Green
 IF DEF(_RED)
-GreenFishingTilesFront: INCBIN "gfx/Green_fishing_tile_front.2bpp"
-GreenFishingTilesBack:  INCBIN "gfx/Green_fishing_tile_back.2bpp"
-GreenFishingTilesSide:  INCBIN "gfx/Green_fishing_tile_side.2bpp"
+GreenFishingTilesFront: INCBIN "gfx/green_fishing_tile_front.2bpp"
+GreenFishingTilesBack:  INCBIN "gfx/green_fishing_tile_back.2bpp"
+GreenFishingTilesSide:  INCBIN "gfx/green_fishing_tile_side.2bpp"
 ENDC
 IF DEF(_BLUE)
 GreenFishingTilesFront: INCBIN "gfx/yellow_fishing_tile_front.2bpp"
@@ -776,7 +776,7 @@ StarmiePicBack:     INCBIN "pic/monback/starmieb.pic"
 ; Adding Green
 IF DEF(_RED)
 RedPicBack::           INCBIN "pic/trainer/redb.pic"
-GreenPicBack:        INCBIN "pic/trainer/Greenb.pic"
+GreenPicBack:        INCBIN "pic/trainer/greenb.pic"
 ENDC
 IF DEF(_BLUE)
 RedPicBack::           INCBIN "pic/trainer/blueb.pic"

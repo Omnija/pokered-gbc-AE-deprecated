@@ -2,10 +2,19 @@ SpritePalettes: ; Taken from pokemon GSC.
 
 ; Red Overworld Sprite
 ; PAL_OW_RED - Better Colours
+IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,24,08
 	RGB 22,07,08
 	RGB 00,00,00
+ENDC
+
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+ENDC
 
 ; Blue Overworld Sprite
 ; PAL_OW_BLUE - Better Colours
@@ -52,20 +61,11 @@ ENDC
 	RGB 0,0,0
 
 ; PAL_OW_EMOJI
-; Attemption at fixing Blue
-IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,31,31
 	RGB 13,13,13
 	RGB 0,0,0
-ENDC	
-	
-IF DEF (_BLUE)
-	RGB 31,31,31
-	RGB 31,24,08
-	RGB 08,12,25
-	RGB 00,00,00
-ENDC
+
 
 ; PAL_OW_TREE
 	RGB 22,31,10
@@ -78,26 +78,52 @@ ENDC
 	RGB 24,18,7
 	RGB 20,15,3
 	RGB 7,7,7
+	
+
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
+
 
 SpritePalettesNite: ; Taken from pokemon GSC.
+; Red Overworld Sprite
+; PAL_OW_RED - Better Colours
+IF DEF (_RED)
+	RGB 31,31,31
+	RGB 25,18,02
+	RGB 16,01,02
+	RGB 00,00,00
+ENDC
 
-; PAL_OW_RED
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 31,7,1
-	RGB 0,0,0
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 25,18,02
+	RGB 02,6,19
+	RGB 00,00,00
+ENDC
 
 ; PAL_OW_BLUE
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 10,9,31
-	RGB 0,0,0
+	RGB 31,31,31
+	RGB 25,18,02
+	RGB 02,6,19
+	RGB 00,00,00
 
-; PAL_OW_GREEN
-	RGB 27,31,27
-	RGB 31,19,10
-	RGB 7,23,3
-	RGB 0,0,0
+; Green Overworld Sprite
+; PAL_OW_Green - Better Colours
+IF DEF (_RED)
+	RGB 31,31,31
+	RGB 25,18,02
+	RGB 02,12,02
+	RGB 00,00,00
+ENDC
+
+IF DEF (_BLUE)
+	RGB 31,31,31
+	RGB 25,18,02
+	RGB 19,17,01
+	RGB 00,00,00
+ENDC
 
 ; PAL_OW_BROWN
 	RGB 27,31,27
@@ -128,9 +154,13 @@ SpritePalettesNite: ; Taken from pokemon GSC.
 	RGB 12,09,15
 	RGB 08,04,05
 	RGB 00,00,00
+	
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
 
 SpritePalettesPokecenter: ; Taken from pokemon GSC.
-
 
 ; Red Overworld Sprite
 ; PAL_OW_RED - Better Colours
@@ -186,20 +216,10 @@ ENDC
 
 
 ; PAL_OW_EMOJI
-; Attemption at fixing Blue
-IF DEF (_RED)
 	RGB 31,31,31
 	RGB 31,31,31
 	RGB 13,13,13
 	RGB 0,0,0
-ENDC	
-	
-IF DEF (_BLUE)
-	RGB 31,31,31
-	RGB 31,24,08
-	RGB 08,12,25
-	RGB 00,00,00
-ENDC
 
 ; PAL_OW_TREE
 	RGB 22,31,10
@@ -212,6 +232,11 @@ ENDC
 	RGB 24,18,7
 	RGB 20,15,3
 	RGB 7,7,7
+	
+	RGB 31,31,31
+	RGB 31,24,08
+	RGB 08,12,25
+	RGB 00,00,00
 
 
 AttackSpritePalettes:
@@ -278,11 +303,11 @@ SlotSpritePaletteMap:
 	db ATK_PAL_RED,ATK_PAL_RED,ATK_PAL_RED,ATK_PAL_RED
 
 	; Penguin/Bird/Something (red), Dugtrio (blue)
-	IF DEF(_RED)
-	db ATK_PAL_BLUE,ATK_PAL_BLUE,ATK_PAL_BLUE,ATK_PAL_BLUE
-	ELSE ; _BLUE
+	;IF DEF(_RED)
+	;db ATK_PAL_BLUE,ATK_PAL_BLUE,ATK_PAL_BLUE,ATK_PAL_BLUE
+	;ELSE ; _BLUE
 	db ATK_PAL_BROWN,ATK_PAL_BROWN,ATK_PAL_BROWN,ATK_PAL_BROWN
-	ENDC
+	;ENDC
 
 	; Rat
 	db ATK_PAL_BROWN,ATK_PAL_BROWN,ATK_PAL_BROWN,ATK_PAL_BROWN

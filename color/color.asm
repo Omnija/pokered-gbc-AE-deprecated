@@ -480,12 +480,7 @@ SetPal_TitleScreen:
 	callba LoadSGBPalette
 
 ; Red/Blue's palette
-IF DEF(_RED)
 	ld d, PAL_HERO
-ENDC
-IF DEF(_BLUE)
-	ld d, PAL_HERO
-ENDC
 	ld e,0
 	callba LoadSGBPalette_Sprite
 
