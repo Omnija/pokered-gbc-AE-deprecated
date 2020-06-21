@@ -1188,6 +1188,11 @@ DisplayTextID::
 	jr nz, HoldTextDisplayOpen
 
 AfterDisplayingTextID::
+	; Instant Text
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, CloseTextDisplay
 	ld a, [wEnteringCableClub]
 	and a
 	jr nz, HoldTextDisplayOpen
@@ -1195,6 +1200,11 @@ AfterDisplayingTextID::
 
 ; loop to hold the dialogue box open as long as the player keeps holding down the A button
 HoldTextDisplayOpen::
+	; Instant Text
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, CloseTextDisplay
 	call Joypad
 	ld a, [hJoyHeld]
 	bit 0, a ; is the A button being pressed?
@@ -3514,16 +3524,32 @@ WaitForTextScrollButtonPress::
 	ret
 
 ; (unless in link battle) waits for A or B being pressed and outputs the scrolling sound effect
-ManualTextScroll::
+ManualTextScroll:: ; 3898 (0:3898)
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .inLinkBattle
-	call WaitForTextScrollButtonPress
+	call WaitForTextScrollButtonHold
 	ld a, SFX_PRESS_AB
 	jp PlaySound
 .inLinkBattle
 	ld c, 65
 	jp DelayFrames
+	
+WaitForTextScrollButtonHold:
+	ld a, [hJoy7]
+	push af
+	ld a, [hJoy6]
+	push af
+	ld a, $1
+	ld [hJoy7], a
+	ld a, $ff
+	ld [hJoy6], a
+	call WaitForTextScrollButtonPress
+	pop af
+	ld [hJoy6], a
+	pop af
+	ld [hJoy7], a
+	ret
 
 ; function to do multiplication
 ; all values are big endian
@@ -3586,6 +3612,10 @@ PrintLetterDelay::
 	ld a, [wOptions]
 	and $f
 	ld [H_FRAMECOUNTER], a
+	; Instant Text
+	cp 0
+	jr z, .buttonsNotPressed
+	
 	jr .checkButtons
 .waitOneFrame
 	ld a, 1

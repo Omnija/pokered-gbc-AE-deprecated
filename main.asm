@@ -13,7 +13,6 @@ PICS_5 EQU $D
 
 INCLUDE "home.asm"
 
-
 SECTION "bank1", ROMX
 
 INCLUDE "data/facing.asm"
@@ -168,7 +167,6 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
-
 ; Relocated Giovanni and Rocket
 GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
 RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
@@ -2718,3 +2716,6 @@ ENDC
 SECTION "field moves", ROMX,BANK[$38]
 INCLUDE "engine/overworld/automatic_repel.asm"
 INCLUDE "engine/menu/item_descriptions.asm"
+;INCLUDE "engine/overworld/leader_rematch.asm"
+;INCLUDE "text/leader_rematch.asm"
+;INCLUDE "engine/overworld/field_moves.asm"

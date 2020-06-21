@@ -1,6 +1,5 @@
 TextBoxBorder::
 ; Draw a c×b text box at hl.
-
 	; top row
 	push hl
 	ld a, "┌"
@@ -344,14 +343,18 @@ ScrollTextUpOneLine::
 	ld [hli], a
 	dec b
 	jr nz, .clearText
-
+	; Instant Text
+	ld a,[wOptions]
+	and $f
+	cp 0
+	jr z, .noScrollWait
 	; wait five frames
 	ld b, 5
 .WaitFrame
 	call DelayFrame
 	dec b
 	jr nz, .WaitFrame
-
+.noScrollWait
 	ret
 
 ProtectedDelay3::

@@ -2884,6 +2884,7 @@ wRoute18Gate1FCurScript:: ; d669
 	ds 78
 wGameProgressFlagsEnd::
 
+;Gender Choice
 wPlayerGender::
 ; $00 = male
 ; $01 = female

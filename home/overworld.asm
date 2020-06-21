@@ -276,20 +276,35 @@ OverworldLoopLessDelay::
 .moveAhead2
 	ld hl, wFlags_0xcd60
 	res 2, [hl]
-	; Running Shoes
-	ld a, [hJoyHeld]
-	and B_BUTTON
-	jr nz, .speedUp
-	
 	ld a, [wWalkBikeSurfState]
 	dec a ; riding a bike?
 	jr nz, .normalPlayerSpriteAdvancement
 	ld a, [wd736]
 	bit 6, a ; jumping a ledge?
 	jr nz, .normalPlayerSpriteAdvancement
-.speedUp
+	; Bike is normally 2x walking speed
+	; Holding B makes the bike even faster
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .notMachBike
 	call DoBikeSpeedup
+	call DoBikeSpeedup
+.notMachBike
+	call DoBikeSpeedup
+	jr .notRunning
 .normalPlayerSpriteAdvancement
+	; surf at 2x walking speed
+	ld a, [wWalkBikeSurfState]
+	cp $02
+	jr z, .surfFaster
+	; Holding B makes you run at 2x walking speed
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .notRunning
+.surfFaster
+	call DoBikeSpeedup
+.notRunning
+	;original .normalPlayerSpriteAdvancement continues here
 	call AdvancePlayerSprite
 	ld a, [wWalkCounter]
 	and a

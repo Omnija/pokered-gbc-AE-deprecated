@@ -51,10 +51,10 @@ ROM0
 	org $150
 	"Main"
 
-	org $1665
+	org $16a0
 	"LoadMonFrontSprite"
 
-	org $1dd9
+	org $1da9
 	"JpPoint"
 
 ROMX $1
@@ -193,7 +193,7 @@ ROMX $1B
 ROMX $1C
 	org $4000
 	"bank1C"
-	org $4b69 ; edited from a to b
+	org $4b69
 	"BattleTransition_BlackScreen"
 	org $5fb6
 	"InitPartyMenuBlkPacket"
@@ -326,4 +326,3 @@ SRAM 2
 SRAM 3
 	org $a000
 	"Saved Boxes 2"
-
