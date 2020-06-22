@@ -200,9 +200,17 @@ BattleHudTiles2:         INCBIN "gfx/battle_hud2.1bpp"
 BattleHudTiles3:         INCBIN "gfx/battle_hud3.1bpp"
 BattleHudTiles3End:
 ENDC
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
-GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
-GamefreakLogoGraphicsEnd:
+
+; Relocated Nintendo Logo to Bank $40
+
+; Add Link Cable Rival
+IF DEF(_RED)
+RivalPicFront::        INCBIN "pic/gstrainer/rival1r.pic"
+ENDC
+IF DEF(_BLUE)
+RivalPicFront::        INCBIN "pic/gstrainer/rival1b.pic"
+ENDC
+
 IF GEN_2_GRAPHICS
 TextBoxGraphics:                INCBIN "gfx/gs/text_box.2bpp"
 TextBoxGraphicsEnd:
@@ -727,7 +735,7 @@ StarmiePicBack:     INCBIN "pic/gsmonback/starmieb.pic"
 ; Adding Green
 IF DEF(_RED)
 RedPicBack::           INCBIN "pic/gstrainer/redb.pic"
-GreenPicBack:        INCBIN "pic/gstrainer/Greenb.pic"
+GreenPicBack:        INCBIN "pic/gstrainer/greenb.pic"
 ENDC
 IF DEF(_BLUE)
 RedPicBack::           INCBIN "pic/gstrainer/blueb.pic"
@@ -2713,9 +2721,14 @@ MarowakPicFront:     INCBIN "pic/bmon/marowak.pic"
 MarowakPicBack:      INCBIN "pic/monback/marowakb.pic"
 ENDC
 
-SECTION "field moves", ROMX,BANK[$38]
+SECTION "bank38", ROMX,BANK[$38]
 INCLUDE "engine/overworld/automatic_repel.asm"
 INCLUDE "engine/menu/item_descriptions.asm"
-;INCLUDE "engine/overworld/leader_rematch.asm"
-;INCLUDE "text/leader_rematch.asm"
-;INCLUDE "engine/overworld/field_moves.asm"
+
+SECTION "bank39", ROMX,BANK[$39]
+
+SECTION "bank40", ROMX,BANK[$40]
+; Relocated Nintendo GFX
+NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
+GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
+GamefreakLogoGraphicsEnd:

@@ -54,7 +54,7 @@ ROM0
 	org $16a0
 	"LoadMonFrontSprite"
 
-	org $1da9
+	org $1da8
 	"JpPoint"
 
 ROMX $1

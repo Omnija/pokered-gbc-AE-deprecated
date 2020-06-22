@@ -9,11 +9,11 @@ Still staying true to the vanilla gameplay, while adding version differences.
 Making it more appealing to to choose 1 version over the other.
 
 
-[Install](/docs/Install.md)
+[Install](/docs/INSTALL.md)
 
 [Features](/docs/Features.md)
 
-[Todo](/docs/Todo.md)
+[Todo](/docs/ToDo.md)
 
 [Credits](/docs/Credits.md)
 

@@ -2965,7 +2965,15 @@ GetTrainerInformation::
 	jp BankswitchBack
 .linkBattle
 	ld hl, wTrainerPicPointer
-	ld de, RedPicFront
+	
+	;Gender Check
+    ld de,GreenPicFront  
+	ld a, [wPlayerGender]
+    and a
+    jr z, .AreBoy
+    ld de, RedPicFront
+.AreBoy
+
 	ld [hl], e
 	inc hl
 	ld [hl], d
