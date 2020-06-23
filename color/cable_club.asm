@@ -42,12 +42,7 @@ LoadCableClubTextPaletteAndMap:
 LoadCableClubTextPalette:
 	; Load red or blue color in all palettes (only palette 7 is important, but loading
 	; all palettes prevents minor artifacts)
-IF DEF(_RED)
-	ld d, PAL_REDMON
-ENDC
-IF DEF(_BLUE)
-	ld d, PAL_BLUEMON
-ENDC
+	ld d, PAL_HERO
 	ld e,0
 .loop:
 	push de

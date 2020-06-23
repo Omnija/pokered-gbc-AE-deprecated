@@ -1269,6 +1269,10 @@ DisplayPokemartDialogue::
 PokemartGreetingText::
 	TX_FAR _PokemartGreetingText
 	db "@"
+	
+RematchTrainerText::	;joenote - for trainer rematch
+	TX_FAR _OneMoreGoSlotMachineText
+	db "@"
 
 LoadItemList::
 	ld a, 1
@@ -2353,15 +2357,20 @@ TalkToTrainer::
 	ld a, c
 	and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
+;;;;;;;joenote - have a rematch with most trainers?
+	callba TrainerRematch
+	jr nz, .trainerNotYetFought
+;;;;;;;
 	ld a, $6
 	call ReadTrainerHeaderInfo     ; print after battle text
 	jp PrintText
 .trainerNotYetFought
+	SetEvent EVENT_909	;joenote - make it so you cannot rematch a defeated trainer until talking to any defeated trainer
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText
-	ld a, $a
-	call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
+	;ld a, $a
+	;call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
 	push de
 	ld a, $8
 	call ReadTrainerHeaderInfo     ; read end battle text

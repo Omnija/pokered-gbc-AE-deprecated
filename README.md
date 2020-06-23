@@ -13,7 +13,7 @@ Making it more appealing to to choose 1 version over the other.
 
 [Features](/docs/Features.md)
 
-[Todo](/docs/ToDo.md)
+[To-do](/docs/To-do.md)
 
 [Credits](/docs/Credits.md)
 

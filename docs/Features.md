@@ -13,4 +13,5 @@
 - BW/2 Repel System
 - PokeCenter (Quicker Healing)
 - Instant Text
-- Item Info 
+- Item Info
+- Trainer Rematch

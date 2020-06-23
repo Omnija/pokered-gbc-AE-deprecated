@@ -7,3 +7,5 @@
 - Change Oak Aids 50 pokemon obtain different item.
 - Gain EXP on capturing a Pokémon.
 - Add more version varieties (???) Need to know more about limitations.
+- Cable Club Opponent Sprite Gender Check + Palette Change
+- Learn more about freeing up space and how to relocated chunks

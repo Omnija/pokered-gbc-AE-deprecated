@@ -2722,8 +2722,8 @@ MarowakPicBack:      INCBIN "pic/monback/marowakb.pic"
 ENDC
 
 SECTION "bank38", ROMX,BANK[$38]
-INCLUDE "engine/overworld/automatic_repel.asm"
-INCLUDE "engine/menu/item_descriptions.asm"
+INCLUDE "custom_functions/func_overworld.asm"
+INCLUDE "custom_functions/menu/item_descriptions.asm"
 
 SECTION "bank39", ROMX,BANK[$39]
 

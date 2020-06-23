@@ -863,9 +863,7 @@ SetPal_TrainerCard:
 	callba LoadSGBPalette
 
 	; Palette for border tiles
-
 	ld d, PAL_HERO
-
 	ld e,5
 	callba LoadSGBPalette
 

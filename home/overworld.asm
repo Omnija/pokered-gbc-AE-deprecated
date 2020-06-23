@@ -2020,31 +2020,22 @@ RunMapScript::
 .return
 	ret
 
-	; Adding Green
+; Adding Green
+; Overworld female trainer sprite functions
+; Relocated Walking, Surfing, Biking and Player Sprites
+; custom_functions/func_overworld.asm
 LoadWalkingPlayerSpriteGraphics::
-    ld de,RedSprite
-    ld a, [wPlayerGender]
-    and a
-    jr z, .AreGuy1
-    ld de,GreenSprite
-.AreGuy1
-    ld hl,vNPCSprites
+	callba LoadWalkingPlayerSpriteGraphicsCall
+;	ld hl, vNPCSprites
     jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
-    ;ld de,SeelSprite
-	ld de,LaprasSprite
-    ld hl,vNPCSprites
+	callba LoadSurfingPlayerSpriteGraphicsCall
+    ;ld hl,vNPCSprites
     jr LoadPlayerSpriteGraphicsCommon
 
 LoadBikePlayerSpriteGraphics::
-    ld de,RedCyclingSprite
-    ld a, [wPlayerGender]
-    and a
-    jr z, .AreGuy2
-    ld de,GreenCyclingSprite
-.AreGuy2
-    ld hl,vNPCSprites
+	callba LoadBikePlayerSpriteGraphicsCall
 
 LoadPlayerSpriteGraphicsCommon::
 	push de

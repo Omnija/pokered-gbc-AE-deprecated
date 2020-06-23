@@ -1,3 +1,50 @@
+
+; Trainer Rematch
+; ShinRed Codes - Fixed YesNoChoices (NoYesChoice)
+TrainerRematch:
+	xor a
+	CheckEvent EVENT_909
+	ld hl, RematchTrainerText
+	call PrintText
+	jr nz, .skip_rematch_choice
+	call YesNoChoice
+    ld a, [wCurrentMenuItem]
+	dec a
+	ret nz
+.skip_rematch_choice
+	ResetEvent EVENT_909
+	xor a
+	ret
+	
+; Adding Green gender sprites
+; Overworld female trainer sprite functions
+; Relocated from home/overworld.asm
+LoadWalkingPlayerSpriteGraphicsCall::
+    ld de,RedSprite
+    ld a, [wPlayerGender]
+    and a
+    jr z, .AreGuy1
+    ld de,GreenSprite
+.AreGuy1
+    ld hl,vNPCSprites
+    ret
+	
+LoadSurfingPlayerSpriteGraphicsCall::
+    ;ld de,SeelSprite
+	ld de,LaprasSprite
+    ld hl,vNPCSprites
+	ret
+	
+LoadBikePlayerSpriteGraphicsCall::
+    ld de,RedCyclingSprite
+    ld a, [wPlayerGender]
+    and a
+    jr z, .AreGuy2
+    ld de,GreenCyclingSprite
+.AreGuy2
+    ld hl,vNPCSprites
+	ret
+
 ; Port of the BW2 Repel System
 ; Based heavily on code from Pokemon Maize
 ; Credit goes to Shanty Town
