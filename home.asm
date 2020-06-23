@@ -2358,6 +2358,7 @@ TalkToTrainer::
 	and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 ;;;;;;;joenote - have a rematch with most trainers?
+; custom_functions/func_overworld.asm
 	callba TrainerRematch
 	jr nz, .trainerNotYetFought
 ;;;;;;;
@@ -2369,8 +2370,8 @@ TalkToTrainer::
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText
-	;ld a, $a
-	;call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
+	ld a, $a
+	call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
 	push de
 	ld a, $8
 	call ReadTrainerHeaderInfo     ; read end battle text

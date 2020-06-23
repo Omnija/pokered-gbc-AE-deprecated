@@ -148,3 +148,4 @@ INCLUDE "data/baseStats/dratini.asm"
 INCLUDE "data/baseStats/dragonair.asm"
 INCLUDE "data/baseStats/dragonite.asm"
 INCLUDE "data/baseStats/mewtwo.asm"
+INCLUDE "data/baseStats/mew.asm"	;mew should have been put here had it not been added so late

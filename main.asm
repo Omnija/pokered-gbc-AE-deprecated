@@ -21,8 +21,8 @@ INCLUDE "engine/black_out.asm"
 
 ; Mew sprites removed from here
 SECTION "Mew Base Stats",ROMX
-
-INCLUDE "data/baseStats/mew.asm"
+;this has been moved to be with the other pokemon base stat files
+;INCLUDE "data/baseStats/mew.asm"
 
 INCLUDE "engine/battle/safari_zone.asm"
 

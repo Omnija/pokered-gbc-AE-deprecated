@@ -6,20 +6,20 @@ DisplayPokemonCenterDialogue_:
 	bit 2, [hl]
 	set 1, [hl]
 	set 2, [hl]
-	jr nz, .skipShallWeHealYourPokemon
+;	jr nz, .skipShallWeHealYourPokemon
 	;ld hl, ShallWeHealYourPokemonText
 	;call PrintText
-.skipShallWeHealYourPokemon
+;.skipShallWeHealYourPokemon
 	;call YesNoChoicePokeCenter ; yes/no menu
 	;ld a, [wCurrentMenuItem]
 	;and a
 	;jr nz, .declinedHealing ; if the player chose No
-	;call SetLastBlackoutMap
+	call SetLastBlackoutMap
 	;call LoadScreenTilesFromBuffer1 ; restore screen
 	;ld hl, NeedYourPokemonText
 	;call PrintText
 	;ld a, $18
-	ld [wSpriteStateData1 + $12], a ; make the nurse turn to face the machine
+	;ld [wSpriteStateData1 + $12], a ; make the nurse turn to face the machine
 	;call Delay3
 	predef HealParty
 	;callba AnimateHealingMachine ; do the healing machine animation
@@ -36,10 +36,10 @@ DisplayPokemonCenterDialogue_:
 	ld a, $14
 	ld [wSpriteStateData1 + $12], a ; make the nurse bow
 	ld c, a
-	;call DelayFrames
+	call DelayFrames
 	jr .done
-.declinedHealing
-	call LoadScreenTilesFromBuffer1 ; restore screen
+;.declinedHealing
+;	call LoadScreenTilesFromBuffer1 ; restore screen
 .done
 	ld hl, PokemonCenterFarewellText
 	call PrintText
@@ -59,8 +59,8 @@ PokemonCenterWelcomeText:
 	;db "@"
 
 ;PokemonFightingFitText:
-	;TX_FAR _PokemonFightingFitText
-	;db "@"
+;	TX_FAR _PokemonFightingFitText
+;	db "@"
 
 PokemonCenterFarewellText:
 	TX_DELAY
