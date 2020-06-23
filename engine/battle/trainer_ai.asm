@@ -273,6 +273,7 @@ ReadMove:
 	pop hl
 	ret
 
+
 ; move choice modification methods that are applied for each trainer class
 ; 0 is sentinel value
 TrainerClassMoveChoiceModifications:

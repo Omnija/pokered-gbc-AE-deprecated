@@ -15,3 +15,7 @@
 - Instant Text
 - Item Info
 - Trainer Rematch
+- Disabled Out of Combat Poison DMG
+- Tutor & Move Deleter (located in Mr.Psychics house)
+		- Probably add the renamer in there as well
+- Cut and Surf Field Moves

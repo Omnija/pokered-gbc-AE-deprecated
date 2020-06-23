@@ -24,7 +24,7 @@ _ViridianFrstAfterBattleText1::
 	done
 
 _ViridianForestBattleText2::
-	text "Yo! You can't jam"
+	text "You can't chill"
 	line "out if you're a"
 	cont "#MON trainer!"
 	done

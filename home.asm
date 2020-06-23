@@ -1515,9 +1515,9 @@ DisplayListMenuIDLoop::
 	call PlaceUnfilledArrowMenuCursor
 
 ; pointless because both values are overwritten before they are read
-	ld a, $01
-	ld [wMenuExitMethod], a
-	ld [wChosenMenuItem], a
+	;ld a, $01
+	;ld [wMenuExitMethod], a
+	;ld [wChosenMenuItem], a
 
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
@@ -1556,6 +1556,11 @@ DisplayListMenuIDLoop::
 	call GetItemPrice
 	pop hl
 	ld a, [wListMenuID]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;needed to make Mateo's move deleter/relearner work
+	cp a, MOVESLISTMENU
+	jr z, .skipStoringItemName
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	cp ITEMLISTMENU
 	jr nz, .skipGettingQuantity
 ; if it's an item menu
@@ -1582,6 +1587,7 @@ DisplayListMenuIDLoop::
 .storeChosenEntry ; store the menu entry that the player chose and return
 	ld de, wcd6d
 	call CopyStringToCF4B ; copy name to wcf4b
+.skipStoringItemName	;joenote - skip here if skipping storing item name
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
 	ld a, [wCurrentMenuItem]
@@ -2366,7 +2372,7 @@ TalkToTrainer::
 	call ReadTrainerHeaderInfo     ; print after battle text
 	jp PrintText
 .trainerNotYetFought
-	SetEvent EVENT_909	;joenote - make it so you cannot rematch a defeated trainer until talking to any defeated trainer
+	;SetEvent EVENT_909	;joenote - make it so you cannot rematch a defeated trainer until talking to any defeated trainer
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText

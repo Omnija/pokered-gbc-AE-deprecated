@@ -13,6 +13,7 @@ SaffronPidgeyHouse_Object:
 	object SPRITE_BUG_CATCHER, 4, 1, STAY, DOWN, 3 ; person
 	object SPRITE_PAPER_SHEET, 3, 3, STAY, NONE, 4 ; person
 
+
 	; warp-to
 	warp_to 2, 7, SAFFRON_PIDGEY_HOUSE_WIDTH
 	warp_to 3, 7, SAFFRON_PIDGEY_HOUSE_WIDTH

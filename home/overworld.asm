@@ -94,6 +94,13 @@ OverworldLoopLessDelay::
 	call IsSpriteOrSignInFrontOfPlayer
 	ld a, [hSpriteIndexOrTextID]
 	and a
+	
+; Adding Field Moves
+	jr nz, .displayDialogue
+
+	; Check for field moves that interact with the bg.
+	predef TryFieldMove
+	
 	jp z, OverworldLoop
 .displayDialogue
 	predef GetTileAndCoordsInFrontOfPlayer
@@ -287,9 +294,11 @@ OverworldLoopLessDelay::
 	ld a, [wIsInBattle]
 	and a
 	jp nz, CheckWarpsNoCollision
-	predef ApplyOutOfBattlePoisonDamage ; also increment daycare mon exp
-	ld a, [wOutOfBattleBlackout]
-	and a
+	
+; Removed out of battle poison dmg
+	;predef ApplyOutOfBattlePoisonDamage ; also increment daycare mon exp
+	;ld a, [wOutOfBattleBlackout]
+	;and a
 	jp nz, HandleBlackOut ; if all pokemon fainted
 .newBattle
 	call NewBattle

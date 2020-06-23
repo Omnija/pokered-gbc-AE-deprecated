@@ -2884,6 +2884,9 @@ wRoute18Gate1FCurScript:: ; d669
 	ds 78
 wGameProgressFlagsEnd::
 
+;joenote - Use the fat block at cca1 as a buffer for  moves
+wMoveBuffer::
+
 ;Gender Choice
 wPlayerGender::
 ; $00 = male

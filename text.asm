@@ -228,6 +228,7 @@ INCLUDE "text/maps/RockTunnelB1F.asm"
 
 SECTION "Text 3", ROMX ; BANK $22
 
+INCLUDE "custom_functions/text/func_npc.asm"
 INCLUDE "text/maps/RockTunnelB1F_2.asm"
 INCLUDE "text/maps/SeafoamIslandsB4F.asm"
 

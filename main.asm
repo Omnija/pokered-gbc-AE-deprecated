@@ -445,6 +445,9 @@ INCLUDE "engine/overworld/ledges.asm"
 
 SECTION "bank7", ROMX
 
+; Custom Move_deleter/relearner
+INCLUDE "custom_functions/func_npc.asm"
+
 INCLUDE "data/mapHeaders/CinnabarIsland.asm"
 INCLUDE "data/mapObjects/CinnabarIsland.asm"
 CinnabarIsland_Blocks: INCBIN "maps/CinnabarIsland.blk"
