@@ -12,31 +12,7 @@ Route1Text1:
 	jr nz, .asm_1cada
 	ld hl, Route1ViridianMartSampleText
 	call PrintText
-	; All Badges
-
-	; All HM
-	lb bc, HM_01, 1
-	call GiveItem
-	lb bc, HM_02, 1
-	call GiveItem
-	lb bc, HM_03, 1
-	call GiveItem
-	lb bc, HM_04, 1
-	call GiveItem
-	lb bc, HM_05, 1
-	call GiveItem
-	; Useful items
-	lb bc, EXP_ALL, 1
-	call GiveItem
-	lb bc, BICYCLE, 1
-	call GiveItem
-	lb bc, TOWN_MAP, 1
-	call GiveItem
-	lb bc, POKE_FLUTE, 1
-	call GiveItem
-	lb bc, MAX_REPEL, 99
-	call GiveItem
-	lb bc, ESCAPE_ROPE, 99
+	lb bc, POTION, 1
 	call GiveItem
 	and a
 	jr z, .continue

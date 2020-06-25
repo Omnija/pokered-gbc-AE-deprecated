@@ -343,6 +343,7 @@ wSerialEnemyMonsPatchList:: ; c5d0
 
 	ds 80
 
+wTempMoveID::
 wTempPic::
 wOverworldMap:: ; c6e8
 	ds 1300
@@ -2884,17 +2885,52 @@ wRoute18Gate1FCurScript:: ; d669
 	ds 78
 wGameProgressFlagsEnd::
 
-;joenote - Use the fat block at cca1 as a buffer for  moves
-wMoveBuffer::
-
 ;Gender Choice
 wPlayerGender::
 ; $00 = male
 ; $01 = female
     ds 1
 
+wExtraFlags::
+; TODO: Move these in with Event Flags and an EngineFlags array
+; bit 0 = Set means next Wildmon or Giftmon will be Shiny (Reset afterwards)
+; bit 1 = Set means there is a baby at the Daycare
+; bit 2 = Set means traded mons obey like normal mons
+; bit 3 = Set means you've received Eon Ticket in Celadon Mansion
+; bit 4 = Set means you've received Mystic Ticket in Cinnabar Lab
+	ds 1
+
+; variable sprites can be changed with scripts
+; useful in the same way it was in Gen 2
+; sprites don't update until the map is reloaded
+; see "data/default_var_sprites.asm"
+wVarSprites::
+wVarSprite1::
+	ds 1
+wVarSprite2::
+	ds 1
+wVarSprite3::
+	ds 1
+wVarSprite4::
+	ds 1
+wVarSprite5::
+	ds 1
+wVarSprite6::
+	ds 1
+
+; List of move ids that can be re-learend (Move Relearner)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+wRelearnableMoves::
+; List of move ids that can be deleted (Move Deleter)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+wDeletableMoves::
+;joenote - Use the fat block at cca1 as a buffer for  moves
+wMoveBuffer::
+
 ; unused
-    ds 55
+    ds 47
 
 wObtainedHiddenItemsFlags::
 	ds 14
@@ -2908,6 +2944,7 @@ wWalkBikeSurfState:: ; d700
 ; $02 = surfing
 	ds 1
 
+; unused?
 	ds 10
 
 wTownVisitedFlag:: ; d70b

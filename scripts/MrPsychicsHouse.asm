@@ -53,3 +53,4 @@ SaffronHouse2Text2:
 SaffronHouse2Text3:
 	TX_FAR MoveRelearnerText1
 	db "@"
+	

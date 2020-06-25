@@ -232,38 +232,28 @@ OverworldLoopLessDelay::
 .noSpinning
 	call UpdateSprites
 
-.moveAhead2
+;***************************************************************************************************
+.moveAhead2		;joenote - rewriting this to implement running functionality
 	ld hl, wFlags_0xcd60
 	res 2, [hl]
-	ld a, [wWalkBikeSurfState]
-	dec a ; riding a bike?
-	jr nz, .normalPlayerSpriteAdvancement
+	;ld a, [wWalkBikeSurfState]
+	;dec a ; riding a bike?
+	;jr nz, .normalPlayerSpriteAdvancement
 	ld a, [wd736]
 	bit 6, a ; jumping a ledge?
 	jr nz, .normalPlayerSpriteAdvancement
-	; Bike is normally 2x walking speed
-	; Holding B makes the bike even faster
-	ld a, [hJoyHeld]
-	and B_BUTTON
-	jr z, .notMachBike
+	;call DoBikeSpeedup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	callba TrackRunBikeSpeed
+.speedloop
+	ld a, [wUnusedD119]
+	dec a
+	ld [wUnusedD119], a
+	jr z, .normalPlayerSpriteAdvancement
 	call DoBikeSpeedup
-	call DoBikeSpeedup
-.notMachBike
-	call DoBikeSpeedup
-	jr .notRunning
+	jr .speedloop
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .normalPlayerSpriteAdvancement
-	; surf at 2x walking speed
-	ld a, [wWalkBikeSurfState]
-	cp $02
-	jr z, .surfFaster
-	; Holding B makes you run at 2x walking speed
-	ld a, [hJoyHeld]
-	and B_BUTTON
-	jr z, .notRunning
-.surfFaster
-	call DoBikeSpeedup
-.notRunning
-	;original .normalPlayerSpriteAdvancement continues here
 	call AdvancePlayerSprite
 	ld a, [wWalkCounter]
 	and a
@@ -1867,7 +1857,7 @@ RunMapScript::
 .return
 	ret
 
-; Adding Green
+;***************************************************************************************************
 ; Overworld female trainer sprite functions
 ; Relocated Walking, Surfing, Biking and Player Sprites
 ; custom_functions/func_overworld.asm
@@ -1883,6 +1873,8 @@ LoadSurfingPlayerSpriteGraphics::
 
 LoadBikePlayerSpriteGraphics::
 	callba LoadBikePlayerSpriteGraphicsCall
+
+;***************************************************************************************************
 
 LoadPlayerSpriteGraphicsCommon::
 	push de

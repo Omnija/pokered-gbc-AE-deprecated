@@ -313,3 +313,4 @@ MoveRelearnerByeText:
 MoveRelearnerNoMovesText:
 	TX_FAR _MoveRelearnerNoMovesText
 	db "@"
+	

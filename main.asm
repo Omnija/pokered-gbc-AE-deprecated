@@ -201,15 +201,9 @@ BattleHudTiles3:         INCBIN "gfx/battle_hud3.1bpp"
 BattleHudTiles3End:
 ENDC
 
-; Relocated Nintendo Logo to Bank $40
-
-; Add Link Cable Rival
-IF DEF(_RED)
-RivalPicFront::        INCBIN "pic/gstrainer/rival1r.pic"
-ENDC
-IF DEF(_BLUE)
-RivalPicFront::        INCBIN "pic/gstrainer/rival1b.pic"
-ENDC
+NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
+GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
+GamefreakLogoGraphicsEnd:
 
 IF GEN_2_GRAPHICS
 TextBoxGraphics:                INCBIN "gfx/gs/text_box.2bpp"
@@ -2725,13 +2719,11 @@ MarowakPicBack:      INCBIN "pic/monback/marowakb.pic"
 ENDC
 
 SECTION "bank38", ROMX,BANK[$38]
+
+
 INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "custom_functions/menu/item_descriptions.asm"
 
 SECTION "bank39", ROMX,BANK[$39]
 
 SECTION "bank40", ROMX,BANK[$40]
-; Relocated Nintendo GFX
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
-GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
-GamefreakLogoGraphicsEnd:

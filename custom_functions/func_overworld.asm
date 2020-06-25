@@ -47,6 +47,37 @@ LoadBikePlayerSpriteGraphicsCall::
 	ret
 
 ;***************************************************************************************************
+;this function handles tracking of how bast to go on or off a bike
+;biking ORs with $2
+;running by holding B ORs with $1
+TrackRunBikeSpeed:
+	xor a
+	ld[wUnusedD119], a
+	ld a, [wWalkBikeSurfState]
+	dec a ; riding a bike? (0 value = TRUE)
+	call z, IsRidingBike
+	ld a, [hJoyHeld]
+	and B_BUTTON	;holding B to speed up? (non-zero value = TRUE)
+	call nz, IsRunning
+	ld a, [wUnusedD119]
+	cp 2	;is biking without speedup being done?
+	jr z, .skip	;if not make the states a value from 1 to 4 (excluding biking without speedup, which needs to be 2)
+	inc a	
+.skip
+	ld[wUnusedD119], a
+	ret
+IsRidingBike:
+	ld a, [wUnusedD119]
+	or $2
+	ld[wUnusedD119], a
+	ret
+IsRunning:
+	ld a, [wUnusedD119]
+	or $1
+	ld[wUnusedD119], a
+	ret
+
+;***************************************************************************************************
 ; Port of the BW2 Repel System
 ; Based heavily on code from Pokemon Maize
 ; Credit goes to Shanty Town
