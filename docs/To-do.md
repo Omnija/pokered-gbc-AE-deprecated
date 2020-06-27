@@ -10,7 +10,7 @@
 - Add more version varieties (???) Need to know more about limitations.
 - Cable Club Opponent Sprite Gender Check + Palette Change
 - Learn more about freeing up space and how to relocated chunks
-- Stop trainers from spinning (moves them into non walking locations)
+- ~~Stop trainers from spinning (moves them into non walking locations)~~
 - Add Field Move for Strength
 - Allow to rename traded pokemon
 

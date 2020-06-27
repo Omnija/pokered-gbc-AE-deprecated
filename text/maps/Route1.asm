@@ -11,6 +11,15 @@ _Route1ViridianMartSampleText::
 	line "you a sample!"
 	cont "Here you go!"
 	prompt
+	
+_Route1ViridianMartSampleText2::
+	text "Oh, i forgot to"
+	line "mention this."
+
+	para "I found this"
+	line "walking around,"
+	cont "so here take this"
+	prompt
 
 _Route1Text_1cae8::
 	text "<PLAYER> got"

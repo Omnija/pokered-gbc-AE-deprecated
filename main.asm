@@ -2720,7 +2720,6 @@ ENDC
 
 SECTION "bank38", ROMX,BANK[$38]
 
-
 INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "custom_functions/menu/item_descriptions.asm"
 

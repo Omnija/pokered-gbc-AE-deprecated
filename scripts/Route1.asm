@@ -9,17 +9,31 @@ Route1_TextPointers:
 Route1Text1:
 	TX_ASM
 	CheckAndSetEvent EVENT_GOT_POTION_SAMPLE
-	jr nz, .asm_1cada
+	jr nz, .asm_1caf7
 	ld hl, Route1ViridianMartSampleText
 	call PrintText
 	lb bc, POTION, 1
 	call GiveItem
-	and a
-	jr z, .continue
-	; Return to script
-	lb bc, POTION, 1
+	jr nc, .BagFull
+	ld hl, Route1Text_1cae8
+	jr .asm_1cadd
+.BagFull
+	ld hl, Route1Text_1caf3
+	jr .asm_1cadd
+.asm_1caf7
+	ld hl, Route1Text_1caf7
+.asm_1cadd
+	call PrintText
+	jp TextScriptEnd
+	
+Route1Text_1caf7:	
+	TX_ASM
+	CheckAndSetEvent EVENT_GOT_EXP_ALL
+	jr nz, .asm_1cada
+	ld hl, Route1ViridianMartSampleText2
+	call PrintText
+	lb bc, EXP_ALL, 1
 	call GiveItem
-.continue
 	jr nc, .BagFull
 	ld hl, Route1Text_1cae8
 	jr .asm_1cadd
@@ -34,6 +48,10 @@ Route1Text1:
 
 Route1ViridianMartSampleText:
 	TX_FAR _Route1ViridianMartSampleText
+	db "@"
+	
+Route1ViridianMartSampleText2:
+	TX_FAR _Route1ViridianMartSampleText2
 	db "@"
 
 Route1Text_1cae8:

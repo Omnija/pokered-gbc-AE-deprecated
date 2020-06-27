@@ -99,8 +99,10 @@ SAFARI_ROCK           EQU $16 ; overload
 	const FLOOR_10F     ; $5F
 	const FLOOR_11F     ; $60
 	const FLOOR_B4F     ; $61
-	
-; Dummy item used for Ferry list
+
+; New Items Added
+
+; Dummy item
 	const GO_HOME       ; $6C
 
 const_value = $C4

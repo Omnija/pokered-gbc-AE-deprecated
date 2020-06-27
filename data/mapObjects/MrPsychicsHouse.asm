@@ -10,7 +10,8 @@ MrPsychicsHouse_Object:
 	db 3 ; objects
 	object SPRITE_FISHER, 5, 3, STAY, LEFT, 1 ; person
 	object SPRITE_OAK_AIDE, 5, 4, STAY, LEFT, 2	; move deleter
-	object SPRITE_OAK_AIDE, 2, 4, STAY, RIGHT, 3	;move relearner
+	object SPRITE_OAK_AIDE, 2, 4, STAY, RIGHT, 3	; move relearner
+;	object SPRITE_OAK_AIDE, 2, 3, STAY, RIGHT, 3	; move tutor
 
 	; warp-to
 	warp_to 2, 7, MR_PSYCHICS_HOUSE_WIDTH

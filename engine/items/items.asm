@@ -99,6 +99,9 @@ ItemUsePtrTable:
 	dw ItemUsePPRestore  ; MAX_ETHER
 	dw ItemUsePPRestore  ; ELIXER
 	dw ItemUsePPRestore  ; MAX_ELIXER
+	
+; New Items
+	dw UnusableItem      ; GO_HOME
 
 ItemUseBall:
 

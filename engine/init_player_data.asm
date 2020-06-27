@@ -37,7 +37,6 @@ START_MONEY EQU $5000
 ; Obtained badges
 	ld hl, wObtainedBadges
 ; Obtain All Badges
-;	ld hl, wObtainedBadges
 ;	set 0, [hl]
 ;	set 1, [hl]
 ;	set 2, [hl]
