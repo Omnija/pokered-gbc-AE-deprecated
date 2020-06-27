@@ -2,7 +2,7 @@ GainExperience:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
-	call DivideExpDataByNumMonsGainingExp
+	;call DivideExpDataByNumMonsGainingExp
 	ld hl, wPartyMon1
 	xor a
 	ld [wWhichPokemon], a
@@ -162,6 +162,7 @@ ENDC
 	callba CalcLevelFromExperience
 	pop hl
 	ld a, [hl] ; current level
+	ld [wTempLevel], a ; store current level
 	cp d
 	jp z, .nextMon ; if level didn't change, go to next mon
 IF GEN_2_GRAPHICS
@@ -273,7 +274,10 @@ ENDC
 	predef FlagActionPredef
 	pop hl
 	pop af
-	ld [wCurEnemyLVL], a
+	ld a, [wCurEnemyLVL]
+	ld c, a
+	ld a, [wTempLevel]
+	ld b, a
 
 .nextMon
 	ld a, [wPartyCount]

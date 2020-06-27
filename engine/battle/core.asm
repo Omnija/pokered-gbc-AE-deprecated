@@ -2391,6 +2391,7 @@ UseBagItem:
 	ld [wCapturedMonSpecies], a
 	ld a, $2
 	ld [wBattleResult], a
+	callab GainExperience
 	scf ; set carry
 	ret
 
