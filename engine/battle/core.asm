@@ -2391,7 +2391,6 @@ UseBagItem:
 	ld [wCapturedMonSpecies], a
 	ld a, $2
 	ld [wBattleResult], a
-;Probably not the right way todo this.
 	callab GainExperience
 	scf ; set carry
 	ret
@@ -5451,7 +5450,7 @@ AIGetTypeEffectiveness:
 	ld [wTypeEffectiveness], a ; store damage multiplier
 	ret
 
-INCLUDE "data/battle/type_effects.asm"
+INCLUDE "data/type_effects.asm"
 
 ; some tests that need to pass for a move to hit
 MoveHitTest:

@@ -130,4 +130,4 @@ CheckIfCoordsInFrontOfPlayerMatch:
 	ld [hCoordsInFrontOfPlayerMatch], a
 	ret
 
-INCLUDE "data/events/hidden_objects.asm"
+INCLUDE "data/hidden_objects.asm"

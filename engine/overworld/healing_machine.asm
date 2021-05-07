@@ -67,7 +67,7 @@ AnimateHealingMachine:
 	jp UpdateSprites
 
 PokeCenterFlashingMonitorAndHealBall:
-	INCBIN "gfx/sprites/pokecenter_ball.2bpp"
+	INCBIN "gfx/pokecenter_ball.2bpp"
 
 ; Pokeball sprites for the pokecenter
 ; HAXed to use palette 4

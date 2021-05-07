@@ -18,7 +18,7 @@ HiddenItems:
 	call GetItemName
 	tx_pre_jump FoundHiddenItemText
 
-INCLUDE "data/events/hidden_item_coords.asm"
+INCLUDE "data/hidden_item_coords.asm"
 
 FoundHiddenItemText:
 	TX_FAR _FoundHiddenItemText
@@ -118,7 +118,7 @@ HiddenCoins:
 .done
 	jp PrintPredefTextID
 
-INCLUDE "data/events/hidden_coins.asm"
+INCLUDE "data/hidden_coins.asm"
 
 FoundHiddenCoinsText:
 	TX_FAR _FoundHiddenCoinsText

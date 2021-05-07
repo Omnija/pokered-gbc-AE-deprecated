@@ -76,7 +76,7 @@ ROMX $3
 	"bank3"
 
 ROMX $4
-
+	org $4000
 	"NPC Sprites 1" ; NPC_SPRITES_1
 	"Graphics (BANK 4)" ; GFX
 	"Battle (BANK 4)"

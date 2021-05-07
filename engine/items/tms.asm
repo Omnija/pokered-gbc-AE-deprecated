@@ -33,4 +33,4 @@ TMToMove:
 	ld [wd11e], a
 	ret
 
-INCLUDE "data/items/tms.asm"
+INCLUDE "data/tms.asm"

@@ -71,4 +71,4 @@ EmotionBubblesOAM:
 	db $FA,$00,$FB,$00
 
 EmotionBubbles:
-	INCBIN "gfx/sprites/emotion_bubbles.2bpp"
+	INCBIN "gfx/emotion_bubbles.2bpp"
