@@ -72,12 +72,12 @@ pokeblue_opt = -Cjv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 
 ### Misc file-specific graphics rules
 
-gfx/blue/intro_purin_1.2bpp: $(RGBGFX) += -h
-gfx/blue/intro_purin_2.2bpp: $(RGBGFX) += -h
-gfx/blue/intro_purin_3.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_1.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_2.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_3.2bpp: $(RGBGFX) += -h
+gfx/versions/blue/intro_purin_1.2bpp: $(RGBGFX) += -h
+gfx/versions/blue/intro_purin_2.2bpp: $(RGBGFX) += -h
+gfx/versions/blue/intro_purin_3.2bpp: $(RGBGFX) += -h
+gfx/versions/red/intro_nido_1.2bpp: $(RGBGFX) += -h
+gfx/versions/red/intro_nido_2.2bpp: $(RGBGFX) += -h
+gfx/versions/red/intro_nido_3.2bpp: $(RGBGFX) += -h
 
 gfx/game_boy.2bpp: tools/gfx += --remove-duplicates
 gfx/theend.2bpp: tools/gfx += --interleave --png=$<

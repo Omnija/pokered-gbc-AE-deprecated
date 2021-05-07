@@ -1904,7 +1904,7 @@ ItemUseGoodRod:
 	xor 1
 	jr RodResponse
 
-INCLUDE "data/good_rod.asm"
+INCLUDE "data/wild/good_rod.asm"
 
 ItemUseSuperRod:
 	call FishingInit
@@ -2690,7 +2690,7 @@ IsKeyItem_:
 	ld [wIsKeyItem], a
 	ret
 
-INCLUDE "data/key_items.asm"
+INCLUDE "data/items/key_items.asm"
 
 SendNewMonToBox:
 	ld de, wNumInBox
@@ -2935,7 +2935,7 @@ ReadSuperRodData:
 	ld e, $1 ; $1 if there's a bite
 	ret
 
-INCLUDE "data/super_rod.asm"
+INCLUDE "data/wild/super_rod.asm"
 
 ; reloads map view and processes sprite data
 ; for items that cause the overworld to be displayed

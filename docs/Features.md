@@ -7,7 +7,7 @@
 - Changed Seel Surfing Sprite to Lapras Surfing Sprite
 - Changed PokeBalls to look more like PokeBalls
 - Removed Save Confirmation
-- Artificial Save Delay
+- Artificial Save Delay Removed
 - Re-Usable TM's
 - Running Shoes
 - BW/2 Repel System
@@ -19,3 +19,7 @@
 - Tutor & Move Deleter (located in Mr.Psychics house)
 		- Probably add the renamer in there as well
 - Cut and Surf Field Moves
+- Exp gain on Capture
+- EXP Distributed Equally
+- Renamable Traded Pokemon
+- Removed trade evolutions (Level 36)

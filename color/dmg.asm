@@ -95,7 +95,7 @@ Code_d000_end:
 
 
 FontCopy:
-	INCBIN "gfx/font.1bpp"
+	INCBIN "gfx/fonts/font.1bpp"
 
 DmgText:
 	db "This game will only "

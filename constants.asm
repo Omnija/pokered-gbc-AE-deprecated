@@ -1,7 +1,8 @@
 GEN_2_GRAPHICS	EQU 1
 
-INCLUDE "macros.asm"
 INCLUDE "charmap.asm"
+
+INCLUDE "macros.asm"
 
 INCLUDE "hram.asm"
 INCLUDE "vram.asm"
@@ -32,5 +33,6 @@ INCLUDE "constants/tilesets.asm"
 INCLUDE "constants/starter_mons.asm"
 INCLUDE "constants/event_constants.asm"
 INCLUDE "constants/text_constants.asm"
+
 INCLUDE "color/wram.asm"
 INCLUDE "color/data/map_palette_constants.asm"
