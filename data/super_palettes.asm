@@ -101,7 +101,7 @@ ENDC
 ; 0x0f: PAL_EXP (only used when GEN_2_GRAPHICS is set)
 	RGB 31,31,31
 	RGB 29,25,15
-	RGB 4,17,31
+	RGB 4,17,31 ; set experience bar colour
 	RGB 0,0,0
 
 ; 0x10: PAL_MEWMON
