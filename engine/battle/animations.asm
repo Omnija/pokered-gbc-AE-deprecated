@@ -1877,7 +1877,7 @@ AnimationMinimizeMon:
 	jp AnimationShowMonPic
 
 MinimizedMonSprite:
-	INCBIN "gfx/minimized_mon_sprite.1bpp"
+	INCBIN "gfx/sprites/minimized_mon_sprite.1bpp"
 MinimizedMonSpriteEnd:
 
 AnimationSlideMonDownAndHide:

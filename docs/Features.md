@@ -23,3 +23,4 @@
 - EXP Distributed Equally
 - Renamable Traded Pokemon
 - Removed trade evolutions (Level 36)
+- Added "Dark Type" for future additions

@@ -161,10 +161,14 @@ TryFieldMove:: ; predef
 	call TrySurf
 	ret z
 	call TryCut
-	ret z
-	;call TryHeadbutt
-	;ret
+	ret
+;	ret z
+;	call TryStrength
+;	ret
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;surf
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 TrySurf:
 ; Check if you are already surfing, and don't do anything if you are.
 	ld a, [wWalkBikeSurfState]
@@ -224,6 +228,9 @@ TrySurf:
 	and a
 	ret
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;cut
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 TryCut: ; yenatch's code originally checked for the SOUL_BADGE like SURF does by mistake.
 	call IsCutTile
 	jr nc, .no
@@ -267,77 +274,14 @@ TryCut: ; yenatch's code originally checked for the SOUL_BADGE like SURF does by
 	and a
 	ret
 
-;TryHeadbutt:
-	;call IsHeadbuttTile
-	;jr nc, .no
-	
-	; Makes sure you have a Pokemon with HEADBUTT.
-	;ld d, HEADBUTT
-	;call HasPartyMove
-	;jr nz, .no
-	
-	; Prints the "A Pokemon might be hiding in this tree" message
-	;call Text2_EnterTheText
-	;ld hl,MightBeHiding
-	;call PrintText
-	;call YesNoChoice
-	;ld a, [wCurrentMenuItem]
-	;and a
-	;jr nz, .no2
-
-	; Calls the HEADBUTT routine if they said Yes.
-	;call GetPartyMonName2
-	;farcall UseHeadbuttOW2
-	;call Text3_DrakesDeception
-
-;.yes
-;	xor a
-;	ret
-	
-;.no2
-;	call Text3_DrakesDeception
-;.no
-;	ld a, 1
-;	and a
-;	ret
-
-;IsHeadbuttTile:
-;	ld a, [wCurMapTileset]
-;	and a ; OVERWORLD
-;	jr z, .overworld
-	
-;	cp FOREST
-;	jr z, .forest
-	
-;	cp PLATEAU
-;	jr z, .plateau
-	
-;	jr .no
-	
-;.plateau
-;	ld a, [wTileInFrontOfPlayer]
-;	cp $17
-;	jr z, .yes
-;	jr .no
-	
-;.forest
-;	ld a, [wTileInFrontOfPlayer]
-;	cp $12
-;	jr z, .yes
-;	jr .no
-	
-;.overworld
-;	ld a, [wTileInFrontOfPlayer]
-;	cp $50
-;	jr z, .yes
-;.no
-;	and a
-;	ret
-;.yes
-;	scf
-;	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Strength
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;surf tileset
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 IsSurfTile:
 	ld a, [wCurMapTileset]
 	ld hl, WaterTilesets2
@@ -379,6 +323,9 @@ WaterTilesets2: ; Renamed from what Yenatch called it, since that had overlap er
 	;db ICE_CAVERN
 	db -1
 
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;cut tileset
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 IsCutTile:
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD
@@ -411,6 +358,14 @@ IsCutTile:
 	ret
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;strength tileset
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;check HM in party
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 HasPartyMove::
 ; Return z (optional: in wWhichTrade) if a PartyMon has move d.
 ; Updates wWhichPokemon.
@@ -475,7 +430,18 @@ Text3_DrakesDeception: ; Closes the text out properly to prevent glitches
 	ld a,[H_LOADEDROMBANK]
 	push af
 	jp CloseTextDisplay
-	
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;surf text
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+WaterIsCalmTxt:
+	text "The water is calm."
+	line "Would you like to"
+	cont "use Surf?@@"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;cut text
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 CanBeCutTxt:
 	text "This tree can be"
 	line "Cut!@@"
@@ -483,19 +449,17 @@ CanBeCutTxt:
 WantToCutTxt:
 	text "Would you like to"
 	line "use Cut?@@"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;strength text
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+CanBeStrengthTxt:
+	text "This rock can be"
+	line "Pushed!@@"
 	
-WaterIsCalmTxt:
-	text "The water is calm."
-	line "Would you like to"
-	cont "use Surf?@@"
-
-;MightBeHiding:
-;	text "A #mon might"
-;	line "be hiding in this"
-;	cont "tree."
-
-;	para "Want to use"
-;	line "Headbutt?@@"
+WantToStrengthTxt:
+	text "Would you like to"
+	line "use Push?@@"
 
 	
 ;***************************************************************************************************
