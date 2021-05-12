@@ -1286,52 +1286,26 @@ IF GEN_2_GRAPHICS
 	RGB 13, 10, 12
 	RGB 00, 00, 00
 
-	; Adding Blue/Red Rival Colours
-IF DEF(_RED)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Adding Blue/Red Rival Colours
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 0xD4: PAL_GARY1
 	RGB 31, 31, 31
 	RGB 31, 24, 08
-	RGB 08, 12, 25
-	RGB 00, 00, 00
-ENDC
-IF DEF(_BLUE)
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 22, 07, 08
-	RGB 00, 00, 00
-ENDC
 IF DEF(_RED)
-; 0xE5: PAL_GARY2
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 08, 12, 25
+	RGB 08, 14, 25
 	RGB 00, 00, 00
 ENDC
 IF DEF(_BLUE)
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 22, 07, 08
+	RGB 26, 07, 08
 	RGB 00, 00, 00
 ENDC
-
-IF DEF(_RED)
-; 0xE6: PAL_GARY3
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 08, 12, 25
-	RGB 00, 00, 00
-ENDC
-IF DEF(_BLUE)
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 22, 07, 08
-	RGB 00, 00, 00
-ENDC
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 0xD5: PAL_OAK
 	RGB 31, 31, 31
-	RGB 24, 19, 11
-	RGB 13, 16, 00
+	RGB 31, 24, 08
+	RGB 22, 14, 5
 	RGB 00, 00, 00
 
 ; 0xD6: PAL_CHIEF
@@ -1423,6 +1397,34 @@ ENDC
 	RGB 25, 16, 12
 	RGB 09, 09, 15
 	RGB 00, 00, 00
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Adding Blue/Red Rival Colours
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 0xE5: PAL_GARY2
+	RGB 31, 31, 31
+	RGB 31, 24, 08
+IF DEF(_RED)
+	RGB 08, 14, 25
+	RGB 00, 00, 00
+ENDC
+IF DEF(_BLUE)
+	RGB 26, 07, 08
+	RGB 00, 00, 00
+ENDC
+
+; 0xE6: PAL_GARY3
+	RGB 31, 31, 31
+	RGB 31, 24, 08
+IF DEF(_RED)
+	RGB 08, 14, 25
+	RGB 00, 00, 00
+ENDC
+IF DEF(_BLUE)
+	RGB 26, 07, 08
+	RGB 00, 00, 00
+ENDC
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 0xE7: PAL_LORELEI
 	RGB 31, 31, 31
@@ -1447,32 +1449,31 @@ ENDC
 	RGB 29, 19, 15
 	RGB 21, 09, 05
 	RGB 00, 00, 00
-
-	; Adding Blue/Red Rival Colours
-IF DEF(_RED)
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Adding Blue/Red Rival Colours
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 0xEB: PAL_HERO
 	RGB 31, 31, 31
 	RGB 31, 24, 08
+IF DEF(_RED)
 	RGB 22, 07, 08
 	RGB 00, 00, 00
-	; Adding Green/Yellow
+ENDC
+IF DEF(_BLUE)
+	RGB 08, 14, 25
+	RGB 00, 00, 00
+ENDC
+	
+; Adding Green/Yellow
 ; 0xEC: PAL_HEROF
 	RGB 31, 31, 31
 	RGB 31, 24, 08
+IF DEF(_RED)
 	RGB 08, 18, 08
 	RGB 00, 00, 00
 ENDC
-
 IF DEF(_BLUE)
-; 0xEB: PAL_HERO
-	RGB 31, 31, 31
-	RGB 31, 24, 08
-	RGB 08, 12, 25
-	RGB 00, 00, 00
-	
-; 0xEC: PAL_HEROF
-	RGB 31, 31, 31
-	RGB 31, 24, 08
 	RGB 14, 14, 06
 	RGB 00, 00, 00
 ENDC

@@ -1,3 +1,4 @@
+; generic
 vChars0 EQU $8000
 vChars1 EQU $8800
 vChars2 EQU $9000
@@ -18,4 +19,3 @@ vTileset     EQU vChars2
 ; Title
 vTitleLogo  EQU vChars1
 vTitleLogo2 EQU vFrontPic + 7 * 7 * $10
-

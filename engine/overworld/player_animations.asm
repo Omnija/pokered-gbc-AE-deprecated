@@ -387,6 +387,8 @@ FishingAnim:
     call DelayFrames
     ld hl, wd736
     set 6, [hl] ; reserve the last 4 OAM entries
+	
+	; Adding Green
     ld a, [wPlayerGender] ; added gender check
     and a      ; added gender check
     jr z, .BoySpriteLoad
@@ -400,6 +402,8 @@ FishingAnim:
     lb bc, BANK(RedSprite), $c
 .KeepLoadingSpriteStuff
     call CopyVideoData
+	
+	; Adding Green
     ld a, [wPlayerGender] ; added gender check
     and a      ; added gender check
     jr z, .BoyTiles ; skip loading Green's stuff if you're Red

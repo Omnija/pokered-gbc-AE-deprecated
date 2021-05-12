@@ -35,9 +35,20 @@ DungeonWarpData:
 ;	FLYWARP_DATA [Map Width][Y-pos][X-pos]
 ;	db Tileset_id
 FirstMapSpec:
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Changing Starting map
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+IF DEF(_RED)
 	db REDS_HOUSE_2F
 	FLYWARP_DATA REDS_HOUSE_2F_WIDTH,6,3
 	db REDS_HOUSE_2
+ENDC
+IF DEF(_BLUE)
+	db BLUES_HOUSE
+	FLYWARP_DATA BLUES_HOUSE_WIDTH,3,5
+	db BLUES_HOUSE
+ENDC
 
 TradeCenterSpec1:
 	db TRADE_CENTER

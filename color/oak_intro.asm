@@ -1,5 +1,14 @@
 ; Helper functions for oak intro
 
+GetOakPalID:
+	call ClearScreen
+IF GEN_2_GRAPHICS
+	ld a, PAL_OAK
+ELSE
+	ld a, PAL_BROWNMON
+ENDC
+	jr GotPalID
+
 GetNidorinoPalID:
 	call ClearScreen
 IF GEN_2_GRAPHICS

@@ -57,6 +57,10 @@ START_MONEY EQU $5000
 	ld [hli], a
 	ld [hl], a
 	
+; Obtain All TMS
+;	lb bc, TM_01, 1
+;	call GiveItem
+	
 ; Obtain All HMS
 ;	lb bc, HM_01, 1
 ;	call GiveItem

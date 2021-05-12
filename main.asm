@@ -168,8 +168,8 @@ SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
 ; Relocated Giovanni and Rocket
-GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
-RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
+GiovanniSprite:        INCBIN "gfx/sprites/giovanni.2bpp"
+RocketSprite:          INCBIN "gfx/sprites/rocket.2bpp"
 
 
 SECTION "Graphics (BANK 4)", ROMX
@@ -238,12 +238,12 @@ IF GEN_2_GRAPHICS
 
 ;Adding Green
 IF DEF(_RED)
-RedPicFront:: INCBIN "gfx/trainers/gstrainer/red.pic"
-GreenPicFront:: INCBIN "gfx/trainers/gstrainer/green.pic"
+RedPicFront:: 		INCBIN "gfx/trainers/gstrainer/red.pic"
+GreenPicFront:: 	INCBIN "gfx/trainers/gstrainer/green.pic"
 ENDC
 IF DEF(_BLUE)
-RedPicFront:: INCBIN "gfx/trainers/gstrainer/blue.pic"
-GreenPicFront:: INCBIN "gfx/trainers/gstrainer/yellow.pic"
+RedPicFront:: 		INCBIN "gfx/trainers/gstrainer/blue.pic"
+GreenPicFront:: 	INCBIN "gfx/trainers/gstrainer/yellow.pic"
 ENDC
 
 rept 11 ; Padding
@@ -253,18 +253,18 @@ endr
 ;Adding Green
 ELSE
 IF DEF(_RED)
-RedPicFront:: INCBIN "gfx/trainers/trainer/red.pic"
-GreenPicFront:: INCBIN "gfx/trainers/trainer/green.pic"
+RedPicFront:: 		INCBIN "gfx/trainers/trainer/red.pic"
+GreenPicFront:: 	INCBIN "gfx/trainers/trainer/green.pic"
 ENDC
 IF DEF(_BLUE)
-RedPicFront:: INCBIN "gfx/trainers/trainer/blue.pic"
-GreenPicFront:: INCBIN "gfx/trainers/trainer/yellow.pic"
+RedPicFront:: 		INCBIN "gfx/trainers/trainer/blue.pic"
+GreenPicFront:: 	INCBIN "gfx/trainers/trainer/yellow.pic"
 ENDC
 
 ENDC
 
-ShrinkPic1::  INCBIN "gfx/trainers/trainer/shrink1.pic"
-ShrinkPic2::  INCBIN "gfx/trainers/trainer/shrink2.pic"
+ShrinkPic1::  		INCBIN "gfx/sprites/shrink1.pic"
+ShrinkPic2::  		INCBIN "gfx/sprites/shrink2.pic"
 
 INCLUDE "engine/turn_sprite.asm"
 INCLUDE "engine/menu/start_sub_menus.asm"
@@ -280,7 +280,7 @@ INCLUDE "engine/random.asm"
 INCLUDE "color/status_screen.asm"
 
 IF GEN_2_GRAPHICS
-EXPBarGraphics:  INCBIN "gfx/gui/gs/exp_bar.2bpp"
+EXPBarGraphics:  	  INCBIN "gfx/gui/gs/exp_bar.2bpp"
 ENDC
 
 
@@ -290,14 +290,14 @@ SECTION "NPC Sprites 2", ROMX ; BANK $05
 IF DEF(_RED)
 RedSprite:            INCBIN "gfx/sprites/red.2bpp"
 RedCyclingSprite:     INCBIN "gfx/sprites/redcycling.2bpp"
-GreenSprite:           INCBIN "gfx/sprites/green.2bpp"
-GreenCyclingSprite:    INCBIN "gfx/sprites/greencycling.2bpp"
+GreenSprite:          INCBIN "gfx/sprites/green.2bpp"
+GreenCyclingSprite:   INCBIN "gfx/sprites/greencycling.2bpp"
 ENDC
 IF DEF(_BLUE)
 RedSprite:            INCBIN "gfx/sprites/blue.2bpp"
 RedCyclingSprite:     INCBIN "gfx/sprites/bluecycling.2bpp"
-GreenSprite:           INCBIN "gfx/sprites/yellow.2bpp"
-GreenCyclingSprite:    INCBIN "gfx/sprites/yellowcycling.2bpp"
+GreenSprite:          INCBIN "gfx/sprites/yellow.2bpp"
+GreenCyclingSprite:   INCBIN "gfx/sprites/yellowcycling.2bpp"
 ENDC
 
 ; Adding Red vs Blue Rival

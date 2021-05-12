@@ -53,27 +53,20 @@ OakSpeech:
 	call SpecialWarpIn
 	xor a
 	ld [hTilesetType], a
-IF GEN_2_GRAPHICS
-	ld a, PAL_OAK
-ELSE
-	ld a, PAL_BROWNMON
-ENDC
-	call GotPalID ; HAX
-	nop
-	nop
-	nop
 	;ld a, [wd732]
 	;bit 1, a ; possibly a debug mode bit
 	;jp nz, .skipChoosingNames
 	
 	; Adding Green
-ld hl,BoyGirlText  ; added to the same file as the other oak text
+	ld hl,BoyGirlText  ; added to the same file as the other oak text
     call PrintText     ; show this text
     call BoyGirlChoice ; added routine at the end of this file
     ld a, [wCurrentMenuItem]
     ld [wPlayerGender], a ; store player's gender. 00 for boy, 01 for girl
-    call ClearScreen ; clear the screen before resuming normal intro	
+;    call ClearScreen ; clear the screen before resuming normal intro	
 	
+	; Moved to oak_intro.asm
+	call GetOakPalID ; HAX
 	ld de, ProfOakPic
 	lb bc, Bank(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight
@@ -159,10 +152,10 @@ ld hl,BoyGirlText  ; added to the same file as the other oak text
     and a      ; check gender
     jr z, .NotGreen3
     ld de,GreenSprite
+    ld hl,vSprites
     lb bc, BANK(GreenSprite), $0C
 .NotGreen3:
-    ld hl,vSprites
-	
+
 	call CopyVideoData
 	ld de, ShrinkPic1
 	lb bc, BANK(ShrinkPic1), $00
@@ -199,6 +192,7 @@ ld hl,BoyGirlText  ; added to the same file as the other oak text
 	call DelayFrames
 	call GBFadeOutToWhite
 	jp ClearScreen
+	
 OakSpeechText1:
 	TX_FAR _OakSpeechText1
 	db "@"

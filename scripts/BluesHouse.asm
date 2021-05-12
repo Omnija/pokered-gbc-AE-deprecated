@@ -7,8 +7,18 @@ BluesHouse_Script:
 BluesHouse_ScriptPointers:
 	dw BluesHouseScript0
 	dw BluesHouseScript1
-
+	dw BluesHouseScript2
+	
 BluesHouseScript0:
+	xor a
+	ld [hJoyHeld], a
+	ld a, PLAYER_DIR_LEFT
+	ld [wPlayerMovingDirection], a
+	ld a, 1
+	ld [wBluesHouseCurScript], a
+	ret
+
+BluesHouseScript1:
 	SetEvent EVENT_ENTERED_BLUES_HOUSE
 
 	; trigger the next script
@@ -16,7 +26,7 @@ BluesHouseScript0:
 	ld [wBluesHouseCurScript], a
 	ret
 
-BluesHouseScript1:
+BluesHouseScript2:
 	ret
 
 BluesHouse_TextPointers:
