@@ -33,7 +33,6 @@ BluesHouse_TextPointers:
 	dw BluesHouseText1
 	dw BluesHouseText2
 	dw BluesHouseText3
-;	dw BlueHousetext4Text1
 
 BluesHouseText1:
 	TX_ASM
@@ -98,14 +97,3 @@ BluesHouseText2: ; Daisy, walking around
 BluesHouseText3: ; map on table
 	TX_FAR _BluesHouseText3
 	db "@"
-
-;BlueHousetext4Text1:
-;	TX_ASM
-;	lb bc, MEW, 50
-;	call GivePokemon
-;	jr nc, .asm_24365
-;	ld a, HS_CELADON_MANSION_EEVEE_GIFT
-;	ld [wMissableObjectIndex], a
-;	predef HideObject
-;.asm_24365
-;	jp TextScriptEnd

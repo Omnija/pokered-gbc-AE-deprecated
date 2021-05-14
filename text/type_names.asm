@@ -30,6 +30,7 @@ TypeNames:
 	dw .Ice
 	dw .Dragon
     dw .Dark
+    dw .Fairy
 
 .Normal:   db "NORMAL@"
 .Fighting: db "FIGHTING@"
@@ -48,3 +49,4 @@ TypeNames:
 .Ghost:    db "GHOST@"
 .Dragon:   db "DRAGON@"
 .Dark:     db "DARK@"
+.Fairy:    db "FAIRY@"

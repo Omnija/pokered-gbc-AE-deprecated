@@ -11,7 +11,6 @@ BluesHouse_Object:
 	object SPRITE_DAISY, 2, 3, STAY, RIGHT, 1 ; Daisy, sitting by map
 	object SPRITE_DAISY, 6, 4, WALK, 1, 2, 0 ; Daisy, walking around
 	object SPRITE_BOOK_MAP_DEX, 3, 3, STAY, NONE, 3, 0 ; map on table
-;	object SPRITE_BALL, 4, 1, STAY, NONE, 4 ; pokeball
 
 	; warp-to
 	warp_to 2, 7, BLUES_HOUSE_WIDTH

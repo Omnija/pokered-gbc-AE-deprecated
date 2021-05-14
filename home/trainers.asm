@@ -147,8 +147,7 @@ CheckFightingMapTrainers::
 	xor a ; EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
-;	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN ; face trainer
-	ld a, $ff ; face triner
+	ld a, $ff ; ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
 	xor a
 	ld [hJoyHeld], a

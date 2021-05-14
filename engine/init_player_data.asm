@@ -92,6 +92,10 @@ START_MONEY EQU $5000
 ;	call GiveItem
 ;	lb bc, MASTER_BALL, 99
 ;	call GiveItem
+
+; Give Pokemon
+;	lb bc, MEW, 50
+;	call GivePokemon
 	
 ; Initialize player coins
 	ld hl, wPlayerCoins

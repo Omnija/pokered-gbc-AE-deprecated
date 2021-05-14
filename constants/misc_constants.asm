@@ -10,14 +10,13 @@ PARTY_LENGTH EQU 6
 MONS_PER_BOX EQU 20
 NUM_BOXES    EQU 12
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;increase bag cap 20 to 30
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-BAG_ITEM_CAPACITY EQU 30
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-;increase pc cap 50 to 60
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-PC_ITEM_CAPACITY  EQU 60
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;increase bag cap 20 to 100
+;increase pc cap 50 to 70
+;causes spinning trainers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+BAG_ITEM_CAPACITY EQU 20
+PC_ITEM_CAPACITY  EQU 50
 
 HOF_MON           EQU $10
 HOF_TEAM          EQU PARTY_LENGTH * HOF_MON

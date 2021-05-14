@@ -23,7 +23,7 @@
 - EXP Distributed Equally
 - Renamable Traded Pokemon
 - Removed trade evolutions (Level 36)
-- Added "Dark Type" for future additions
+- Added "Dark/Fairy Types" for future additions
 - Expanded inventory from 20 to 30
 - Expanded pc items from 50 to 60
 - Red starts in red house / Blue start in blues house

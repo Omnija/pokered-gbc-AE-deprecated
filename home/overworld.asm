@@ -182,7 +182,6 @@ OverworldLoopLessDelay::
 	ld a, 1
 	ld [wSpriteStateData1 + 5], a ; delta X
 
-
 .handleDirectionButtonPress
 	ld [wPlayerDirection], a ; new direction
 	callba handleDirectionButtonPressCall	;joenote - moved to func_overworld.asm to save space

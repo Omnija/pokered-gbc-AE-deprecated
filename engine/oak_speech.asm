@@ -63,7 +63,7 @@ OakSpeech:
     call BoyGirlChoice ; added routine at the end of this file
     ld a, [wCurrentMenuItem]
     ld [wPlayerGender], a ; store player's gender. 00 for boy, 01 for girl
-;    call ClearScreen ; clear the screen before resuming normal intro	
+    ;call ClearScreen ; clear the screen before resuming normal intro	
 	
 	; Moved to oak_intro.asm
 	call GetOakPalID ; HAX
