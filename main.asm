@@ -235,7 +235,6 @@ INCLUDE "engine/menu/status_screen.asm"
 INCLUDE "engine/menu/party_menu.asm"
 
 IF GEN_2_GRAPHICS
-
 ;Adding Green
 IF DEF(_RED)
 RedPicFront:: 		INCBIN "gfx/trainers/gstrainer/red.pic"

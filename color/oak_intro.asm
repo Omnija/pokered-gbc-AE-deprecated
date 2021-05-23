@@ -30,6 +30,8 @@ IF GEN_2_GRAPHICS
 .male
 	ld a, PAL_HERO
 .female
+ELSE
+	ld a, PAL_REDMON
 ENDC
 	jr GotPalID
 

@@ -116,6 +116,7 @@ DetermineBackSpritePaletteID:
 	and a
 	jr nz,.getPaletteID ; Check if trainer?
 
+	; Adding green
 IF GEN_2_GRAPHICS
 	; Adding Gender Check
 	ld a, [wPlayerGender]
@@ -127,6 +128,7 @@ IF GEN_2_GRAPHICS
 	ld a, PAL_HERO
 ENDC
 	ret
+	
 .getPaletteID
 	ld e, a
 	ld d, $00

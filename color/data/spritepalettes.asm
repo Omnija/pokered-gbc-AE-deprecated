@@ -94,8 +94,14 @@ ENDC
 ; PAL_OW_BLUE
 	RGB 31,31,31
 	RGB 25,18,02
+IF DEF (_RED)
 	RGB 02,06,19
 	RGB 00,00,00
+ENDC
+IF DEF (_BLUE)
+	RGB 16,01,02
+	RGB 00,00,00
+ENDC
 
 ; Green Overworld Sprite
 ; PAL_OW_GREEN - Better Colours
@@ -112,8 +118,8 @@ ENDC
 
 ; PAL_OW_BROWN
 	RGB 27,31,27
-	RGB 31,19,10
-	RGB 15,10,3
+	RGB 31,24,08
+	RGB 22,14,05
 	RGB 00,00,00
 
 ; PAL_OW_PURPLE
@@ -188,8 +194,8 @@ ENDC
 
 ; PAL_OW_BROWN
 	RGB 27,31,27
-	RGB 31,19,10
-	RGB 15,10,03
+	RGB 31,24,08
+	RGB 22,14,05
 	RGB 00,00,00
 
 ; Heal Machine pokeballs and screen

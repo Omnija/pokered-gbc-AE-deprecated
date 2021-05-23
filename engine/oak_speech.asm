@@ -144,7 +144,6 @@ OakSpeech:
 	ld c, 4
 	call DelayFrames
 	ld de, RedSprite
-	ld hl, vSprites
 	lb bc, BANK(RedSprite), $0C
 	
 	; Adding Green
@@ -152,10 +151,10 @@ OakSpeech:
     and a      ; check gender
     jr z, .NotGreen3
     ld de,GreenSprite
-    ld hl,vSprites
     lb bc, BANK(GreenSprite), $0C
 .NotGreen3:
 
+	ld hl, vSprites
 	call CopyVideoData
 	ld de, ShrinkPic1
 	lb bc, BANK(ShrinkPic1), $00
