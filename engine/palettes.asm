@@ -126,8 +126,8 @@ IF GEN_2_GRAPHICS
 	ret
 .male
 	ld a, PAL_HERO
-ENDC
 	ret
+ENDC	
 	
 .getPaletteID
 	ld e, a
