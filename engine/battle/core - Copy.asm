@@ -2782,15 +2782,6 @@ MoveNoPPText:
 MoveDisabledText:
 	TX_FAR _MoveDisabledText
 	db "@"
-	
-OtherText:
-	db "Status@"
-
-PhysicalText: ; Added for PS Split
-	db "Physical@"
-
-SpecialText: ; added for PS Split
-	db "Special@"
 
 WhichTechniqueString:
 	db "WHICH TECHNIQUE?@"
@@ -2960,7 +2951,7 @@ PrintMenuItem:
 	coord hl, 1, 10
 	ld de, DisabledText
 	call PlaceString
-	jp .moveDisabled
+	jr .moveDisabled
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -2988,30 +2979,13 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wcd6d], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Adding physical/ Special Split
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wPlayerSelectedMove]
-	call PhysicalSpecialSplit
-	cp a,$02
-	jp z, .OtherTextShow
-	cp a,$01
-	jp nz, .PhysicalTextShow
+; print TYPE/<type> and <curPP>/<maxPP>
 	coord hl, 1, 9
-	ld de,SpecialText
+	ld de, TypeText
 	call PlaceString
-	jp .RestOfTheRoutineThing
-.PhysicalTextShow
-	coord hl, 1,9
-	ld de,PhysicalText
-	call PlaceString
-	jr .RestOfTheRoutineThing
-.OtherTextShow
-	coord hl, 1,9
-	ld de,OtherText
-	call PlaceString
-.RestOfTheRoutineThing
 	coord hl, 7, 11
+	ld [hl], "/"
+	coord hl, 5, 9
 	ld [hl], "/"
 	coord hl, 5, 11
 	ld de, wcd6d
@@ -4286,12 +4260,8 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
-;;;;;;;;;;;;;;;;;;;;;;;;
-;Adding physical/special
-;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a,[wPlayerSelectedMove]
-	call PhysicalSpecialSplit
-	cp a, SPECIAL
+	ld a, [hl] ; a = [wPlayerMoveType]
+	cp FIRE ; types >= FIRE are all special
 	jr nc, .specialAttack
 .physicalAttack
 	ld hl, wEnemyMonDefense
@@ -9018,12 +8988,3 @@ BattleMonPartyAttr:
 	ld bc, wPartyMon2 - wPartyMon1
 	jp AddNTimes
 ENDC
-
-; Determine if a move is Physical, Special, or Status
-; INPUT: Move ID in register a
-; OUTPUT: Move Physical/Special/Status type in register a
-PhysicalSpecialSplit:
-	ld [wTempMoveID], a
-	callba _PhysicalSpecialSplit
-	ld a, [wTempMoveID]
-	ret

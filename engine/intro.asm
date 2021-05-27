@@ -438,34 +438,35 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
-	INCBIN "gfx/gamefreak_intro.2bpp"
-	INCBIN "gfx/gamefreak_logo.2bpp"
+	INCBIN "gfx/title/gamefreak_intro.2bpp"
+	INCBIN "gfx/title/gamefreak_logo.2bpp"
 	rept 16
 	db $00 ; blank tile
 	endr
 GameFreakIntroEnd:
 
 FightIntroBackMon:
-	INCBIN "gfx/intro_fight.2bpp"
+	INCBIN "gfx/title/intro_fight.2bpp"
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
 
 IF DEF(_RED)
-	INCBIN "gfx/red/intro_nido_1.2bpp"
+	INCBIN "gfx/title/red/intro_nido_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/red/intro_nido_2.2bpp"
+	INCBIN "gfx/title/red/intro_nido_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/red/intro_nido_3.2bpp"
+	INCBIN "gfx/title/red/intro_nido_3.2bpp"
 ENDC
 
 IF DEF(_BLUE)
-	INCBIN "gfx/blue/intro_purin_1.2bpp"
+	INCBIN "gfx/title/blue/intro_purin_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/blue/intro_purin_2.2bpp"
+	INCBIN "gfx/title/blue/intro_purin_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/blue/intro_purin_3.2bpp"
+	INCBIN "gfx/title/blue/intro_purin_3.2bpp"
 ENDC
+
 
 FightIntroFrontMonEnd:
 

@@ -934,7 +934,7 @@ SetPal_NameEntry:
 SetPal_GenderSelect:
 	ld a,2
 	ld [rSVBK],a
-	ld d,PAL_HERO
+	ld d, PAL_HERO
 	ld e,0
 	callba LoadSGBPalette
 

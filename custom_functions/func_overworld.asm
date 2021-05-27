@@ -453,11 +453,11 @@ WantToCutTxt:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;strength text
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
-CanBeStrengthTxt:
+CanBePushTxt:
 	text "This rock can be"
 	line "Pushed!@@"
 	
-WantToStrengthTxt:
+WantToPushTxt:
 	text "Would you like to"
 	line "use Push?@@"
 

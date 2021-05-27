@@ -71,28 +71,28 @@ DeterminePaletteID:
 	ld a, [wd11e]
 	ld hl, MonsterPalettes
 	and a
-	jr nz,.skipDexNumConversion ; Check if trainer?
+	jr nz, .skipDexNumConversion ; Check if trainer?
 
 IF GEN_2_GRAPHICS ; Trainers are given individualized palettes
 	; In link battle, don't rely in wTrainerClass (for some reason it's set to
 	; OPP_GARY, so ignore it)
-	ld a,[wLinkState]
+	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ld a, PAL_HERO
 	ret z
 
-	ld a,[wTrainerClass] ; Get trainer ID
+	ld a, [wTrainerClass] ; Get trainer ID
 	ld hl, TrainerPalettes
 ELSE
 	; Trainers are given a single palette (PAL_MEWMON)
 	; However, check specifically for the player's sprite in linked battle
-	ld e,a
-	ld a,[wLinkState]
+	ld e, a
+	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ld a, PAL_REDMON
 	ret z
 
-	ld a,e
+	ld a, e
 ENDC
 
 .skipDexNumConversion
@@ -114,20 +114,26 @@ DetermineBackSpritePaletteID:
 	ld a, [wd11e]
 	ld hl, MonsterPalettes
 	and a
-	jr nz,.getPaletteID ; Check if trainer?
+	jr nz, .getPaletteID ; Check if trainer?
 
-	; Adding green
 IF GEN_2_GRAPHICS
-	; Adding Gender Check
 	ld a, [wPlayerGender]
 	and a
-	jr z, .male
+	jr z, .AreBoy
 	ld a, PAL_HEROF
 	ret
-.male
+.AreBoy
 	ld a, PAL_HERO
+ELSE
+	ld a, [wPlayerGender]
+	and a
+	jr z, .AreBoy
+	ld a, PAL_GREENMON
 	ret
-ENDC	
+.AreBoy
+	ld a, PAL_REDMON
+ENDC
+	ret
 	
 .getPaletteID
 	ld e, a
@@ -135,7 +141,6 @@ ENDC
 	add hl, de
 	ld a, [hl]
 	ret
-
 
 SECTION "InitPartyMenuBlkPacket",ROMX
 

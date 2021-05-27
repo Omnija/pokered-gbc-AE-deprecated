@@ -43,7 +43,8 @@ LoadCableClubTextPalette:
 	; Load red or blue color in all palettes (only palette 7 is important, but loading
 	; all palettes prevents minor artifacts)
 	ld d, PAL_HERO
-	ld e,0
+	ld e, 0
+	
 .loop:
 	push de
 	callba LoadSGBPalette

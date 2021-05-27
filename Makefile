@@ -6,7 +6,7 @@ pokeblue_obj := audio_blue.o main_blue.o text_blue.o wram_blue.o
 
 ### Build tools
 
-MD5 := md5sum -c
+MD5 := md5sum -c --quiet
 
 RGBDS ?=
 RGBASM  ?= $(RGBDS)rgbasm
@@ -18,10 +18,11 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
+.SUFFIXES: .asm .o .gbc .png .2bpp .1bpp .pic
 .SECONDEXPANSION:
-.PRECIOUS:
-.SECONDARY:
-.PHONY: all red blue clean tidy compare tools
+# Suppress annoying intermediate file deletion messages.
+.PRECIOUS: %.2bpp
+.PHONY: all clean red green blue compare
 
 all: $(roms)
 red: pokered.gbc
@@ -60,6 +61,7 @@ $(pokered_obj): %_red.o: %.asm $$(dep)
 %_blue.o: dep = $(shell tools/scan_includes $(@D)/$*.asm)
 $(pokeblue_obj): %_blue.o: %.asm $$(dep)
 	$(RGBASM) -D _BLUE -h -o $@ $*.asm
+	
 
 pokered_opt  = -Cjv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
 pokeblue_opt = -Cjv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
@@ -72,12 +74,12 @@ pokeblue_opt = -Cjv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 
 ### Misc file-specific graphics rules
 
-gfx/blue/intro_purin_1.2bpp: $(RGBGFX) += -h
-gfx/blue/intro_purin_2.2bpp: $(RGBGFX) += -h
-gfx/blue/intro_purin_3.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_1.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_2.2bpp: $(RGBGFX) += -h
-gfx/red/intro_nido_3.2bpp: $(RGBGFX) += -h
+gfx/title/blue/intro_purin_1.2bpp: $(RGBGFX) += -h
+gfx/title/blue/intro_purin_2.2bpp: $(RGBGFX) += -h
+gfx/title/blue/intro_purin_3.2bpp: $(RGBGFX) += -h
+gfx/title/red/intro_nido_1.2bpp: $(RGBGFX) += -h
+gfx/title/red/intro_nido_2.2bpp: $(RGBGFX) += -h
+gfx/title/red/intro_nido_3.2bpp: $(RGBGFX) += -h
 
 gfx/game_boy.2bpp: tools/gfx += --remove-duplicates
 gfx/theend.2bpp: tools/gfx += --interleave --png=$<

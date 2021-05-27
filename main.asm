@@ -174,15 +174,16 @@ RocketSprite:          INCBIN "gfx/sprites/rocket.2bpp"
 
 SECTION "Graphics (BANK 4)", ROMX
 
-PokemonLogoGraphics:            INCBIN "gfx/gui/gs/new_pokemon_logo.2bpp"
 IF GEN_2_GRAPHICS
+PokemonLogoGraphics:            INCBIN "gfx/title/new_pokemon_logo.2bpp"
 FontGraphics:                   INCBIN "gfx/gui/gs/font.1bpp"
 FontGraphicsEnd:
 ELSE
+PokemonLogoGraphics:            INCBIN "gfx/title/pokemon_logo.2bpp"
 FontGraphics:                   INCBIN "gfx/gui/font.1bpp"
 FontGraphicsEnd:
 ENDC
-ABTiles:                        INCBIN "gfx/AB.2bpp"
+ABTiles:                        INCBIN "gfx/misc/AB.2bpp"
 IF GEN_2_GRAPHICS
 HpBarAndStatusGraphics:  INCBIN "gfx/gui/gs/gen2_hp_bar_and_status.2bpp"
 HpBarAndStatusGraphicsEnd:
@@ -201,8 +202,8 @@ BattleHudTiles3:         INCBIN "gfx/gui/battle_hud3.1bpp"
 BattleHudTiles3End:
 ENDC
 
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
-GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
+NintendoCopyrightLogoGraphics:  INCBIN "gfx/title/copyright.2bpp"
+GamefreakLogoGraphics:          INCBIN "gfx/title/gamefreak.2bpp"
 GamefreakLogoGraphicsEnd:
 
 IF GEN_2_GRAPHICS
@@ -217,12 +218,12 @@ PokedexTileGraphicsEnd:
 WorldMapTileGraphics:           INCBIN "gfx/gui/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
-; Adding Red vs Blue Rival
+; Adding Red vs Blue
 IF DEF(_RED)
-PlayerCharacterTitleGraphics:   INCBIN "gfx/red/player_title.2bpp"
+PlayerCharacterTitleGraphics:   INCBIN "gfx/title/red/player_title.2bpp"
 ENDC
 IF DEF(_BLUE)
-PlayerCharacterTitleGraphics:   INCBIN "gfx/blue/playerB_title.2bpp"
+PlayerCharacterTitleGraphics:   INCBIN "gfx/title/blue/player_title.2bpp"
 ENDC
 
 PlayerCharacterTitleGraphicsEnd:
@@ -261,6 +262,7 @@ GreenPicFront:: 	INCBIN "gfx/trainers/trainer/yellow.pic"
 ENDC
 
 ENDC
+
 
 ShrinkPic1::  		INCBIN "gfx/sprites/shrink1.pic"
 ShrinkPic2::  		INCBIN "gfx/sprites/shrink2.pic"
@@ -626,7 +628,6 @@ SECTION "Pics 1", ROMX ; BANK $09
 IF GEN_2_GRAPHICS
 MoltresPicFront:    INCBIN "gfx/pokemon/gsfront/moltres.pic"
 MoltresPicBack:     INCBIN "gfx/pokemon/gsback/moltresb.pic"
-
 TentacoolPicFront:  INCBIN "gfx/pokemon/gsfront/tentacool.pic"
 TentacoolPicBack:   INCBIN "gfx/pokemon/gsback/tentacoolb.pic"
 ScytherPicFront:    INCBIN "gfx/pokemon/gsfront/scyther.pic"
@@ -639,7 +640,6 @@ PinsirPicFront:     INCBIN "gfx/pokemon/gsfront/pinsir.pic"
 PinsirPicBack:      INCBIN "gfx/pokemon/gsback/pinsirb.pic"
 TangelaPicFront:    INCBIN "gfx/pokemon/gsfront/tangela.pic"
 TangelaPicBack:     INCBIN "gfx/pokemon/gsback/tangelab.pic"
-
 JolteonPicFront:    INCBIN "gfx/pokemon/gsfront/jolteon.pic"
 JolteonPicBack:     INCBIN "gfx/pokemon/gsback/jolteonb.pic"
 VaporeonPicFront:   INCBIN "gfx/pokemon/gsfront/vaporeon.pic"
@@ -667,7 +667,6 @@ ENDC
 IF !GEN_2_GRAPHICS
 MoltresPicFront:    INCBIN "gfx/pokemon/front/moltres.pic"
 MoltresPicBack:     INCBIN "gfx/pokemon/back/moltresb.pic"
-
 TentacoolPicFront:  INCBIN "gfx/pokemon/front/tentacool.pic"
 TentacoolPicBack:   INCBIN "gfx/pokemon/back/tentacoolb.pic"
 ScytherPicFront:    INCBIN "gfx/pokemon/front/scyther.pic"
@@ -680,7 +679,6 @@ PinsirPicFront:     INCBIN "gfx/pokemon/front/pinsir.pic"
 PinsirPicBack:      INCBIN "gfx/pokemon/back/pinsirb.pic"
 TangelaPicFront:    INCBIN "gfx/pokemon/front/tangela.pic"
 TangelaPicBack:     INCBIN "gfx/pokemon/back/tangelab.pic"
-
 JolteonPicFront:    INCBIN "gfx/pokemon/front/jolteon.pic"
 JolteonPicBack:     INCBIN "gfx/pokemon/back/jolteonb.pic"
 VaporeonPicFront:   INCBIN "gfx/pokemon/front/vaporeon.pic"
@@ -714,32 +712,6 @@ INCLUDE "engine/battle/moveEffects/focus_energy_effect.asm"
 
 SECTION "Pics 2", ROMX ; BANK $0A
 
-IF GEN_2_GRAPHICS
-HaunterPicFront:    INCBIN "gfx/pokemon/gsfront/haunter.pic"
-HaunterPicBack:     INCBIN "gfx/pokemon/gsback/haunterb.pic"
-AbraPicFront:       INCBIN "gfx/pokemon/gsfront/abra.pic"
-AbraPicBack:        INCBIN "gfx/pokemon/gsback/abrab.pic"
-AlakazamPicFront:   INCBIN "gfx/pokemon/gsfront/alakazam.pic"
-AlakazamPicBack:    INCBIN "gfx/pokemon/gsback/alakazamb.pic"
-PidgeottoPicFront:  INCBIN "gfx/pokemon/gsfront/pidgeotto.pic"
-PidgeottoPicBack:   INCBIN "gfx/pokemon/gsback/pidgeottob.pic"
-PidgeotPicFront:    INCBIN "gfx/pokemon/gsfront/pidgeot.pic"
-PidgeotPicBack:     INCBIN "gfx/pokemon/gsback/pidgeotb.pic"
-StarmiePicFront:    INCBIN "gfx/pokemon/gsfront/starmie.pic"
-StarmiePicBack:     INCBIN "gfx/pokemon/gsback/starmieb.pic"
-
-; Adding Green
-IF DEF(_RED)
-RedPicBack::           INCBIN "gfx/trainers/gstrainer/redb.pic"
-GreenPicBack:        INCBIN "gfx/trainers/gstrainer/greenb.pic"
-ENDC
-IF DEF(_BLUE)
-RedPicBack::           INCBIN "gfx/trainers/gstrainer/blueb.pic"
-GreenPicBack:        INCBIN "gfx/trainers/gstrainer/yellowb.pic"
-ENDC
-
-OldManPic:          INCBIN "gfx/trainers/gstrainer/oldman.pic"
-
 ; Relocated Seel Sprite
 SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
 
@@ -755,10 +727,35 @@ GreenFishingTilesBack:  INCBIN "gfx/sprites/yellow_fishing_tile_back.2bpp"
 GreenFishingTilesSide:  INCBIN "gfx/sprites/yellow_fishing_tile_side.2bpp"
 ENDC
 
+IF GEN_2_GRAPHICS
+HaunterPicFront:    INCBIN "gfx/pokemon/gsfront/haunter.pic"
+HaunterPicBack:     INCBIN "gfx/pokemon/gsback/haunterb.pic"
+AbraPicFront:       INCBIN "gfx/pokemon/gsfront/abra.pic"
+AbraPicBack:        INCBIN "gfx/pokemon/gsback/abrab.pic"
+AlakazamPicFront:   INCBIN "gfx/pokemon/gsfront/alakazam.pic"
+AlakazamPicBack:    INCBIN "gfx/pokemon/gsback/alakazamb.pic"
+PidgeottoPicFront:  INCBIN "gfx/pokemon/gsfront/pidgeotto.pic"
+PidgeottoPicBack:   INCBIN "gfx/pokemon/gsback/pidgeottob.pic"
+PidgeotPicFront:    INCBIN "gfx/pokemon/gsfront/pidgeot.pic"
+PidgeotPicBack:     INCBIN "gfx/pokemon/gsback/pidgeotb.pic"
+StarmiePicFront:    INCBIN "gfx/pokemon/gsfront/starmie.pic"
+StarmiePicBack:     INCBIN "gfx/pokemon/gsback/starmieb.pic"
 GastlyPicFront:     INCBIN "gfx/pokemon/gsfront/gastly.pic"
 GastlyPicBack:      INCBIN "gfx/pokemon/gsback/gastlyb.pic"
 VileplumePicFront:  INCBIN "gfx/pokemon/gsfront/vileplume.pic"
 VileplumePicBack:   INCBIN "gfx/pokemon/gsback/vileplumeb.pic"
+
+; Adding Green
+IF DEF(_RED)
+RedPicBack::           INCBIN "gfx/trainers/gstrainer/redb.pic"
+GreenPicBack:        INCBIN "gfx/trainers/gstrainer/greenb.pic"
+ENDC
+IF DEF(_BLUE)
+RedPicBack::           INCBIN "gfx/trainers/gstrainer/blueb.pic"
+GreenPicBack:        INCBIN "gfx/trainers/gstrainer/yellowb.pic"
+ENDC
+
+OldManPic:          INCBIN "gfx/trainers/gstrainer/oldman.pic"
 ENDC
 
 IF !GEN_2_GRAPHICS
@@ -774,6 +771,10 @@ PidgeotPicFront:    INCBIN "gfx/pokemon/front/pidgeot.pic"
 PidgeotPicBack:     INCBIN "gfx/pokemon/back/pidgeotb.pic"
 StarmiePicFront:    INCBIN "gfx/pokemon/front/starmie.pic"
 StarmiePicBack:     INCBIN "gfx/pokemon/back/starmieb.pic"
+GastlyPicFront:     INCBIN "gfx/pokemon/front/gastly.pic"
+GastlyPicBack:      INCBIN "gfx/pokemon/back/gastlyb.pic"
+VileplumePicFront:  INCBIN "gfx/pokemon/front/vileplume.pic"
+VileplumePicBack:   INCBIN "gfx/pokemon/back/vileplumeb.pic"
 
 ; Adding Green
 IF DEF(_RED)
@@ -786,11 +787,6 @@ GreenPicBack:        INCBIN "gfx/trainers/trainer/yellowb.pic"
 ENDC
 
 OldManPic:          INCBIN "gfx/trainers/trainer/oldman.pic"
-
-GastlyPicFront:     INCBIN "gfx/pokemon/front/gastly.pic"
-GastlyPicBack:      INCBIN "gfx/pokemon/back/gastlyb.pic"
-VileplumePicFront:  INCBIN "gfx/pokemon/front/vileplume.pic"
-VileplumePicBack:   INCBIN "gfx/pokemon/back/vileplumeb.pic"
 ENDC
 
 
@@ -853,12 +849,12 @@ INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 
 TradingAnimationGraphics:
-INCBIN "gfx/game_boy.2bpp"
-INCBIN "gfx/link_cable.2bpp"
+INCBIN "gfx/misc/game_boy.2bpp"
+INCBIN "gfx/misc/link_cable.2bpp"
 TradingAnimationGraphicsEnd:
 
 ; Pokeball traveling through the link cable.
-TradingAnimationGraphics2: INCBIN "gfx/trade2.2bpp"
+TradingAnimationGraphics2: INCBIN "gfx/misc/trade2.2bpp"
 TradingAnimationGraphics2End:
 
 INCLUDE "engine/evos_moves.asm"
@@ -1912,10 +1908,10 @@ INCLUDE "engine/battle/decrement_pp.asm"
 
 Version_GFX:
 IF DEF(_RED)
-	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
+	INCBIN "gfx/title/red/redgreenversion.1bpp" ; 10 tiles
 ENDC
 IF DEF(_BLUE)
-	INCBIN "gfx/blue/blueversion.1bpp" ; 8 tiles
+	INCBIN "gfx/title/blue/blueversion.1bpp" ; 8 tiles
 ENDC
 Version_GFXEnd:
 
@@ -2132,13 +2128,13 @@ IF DEF(_RED)
 RedFishingTilesFront: INCBIN "gfx/sprites/red_fishing_tile_front.2bpp"
 RedFishingTilesBack:  INCBIN "gfx/sprites/red_fishing_tile_back.2bpp"
 RedFishingTilesSide:  INCBIN "gfx/sprites/red_fishing_tile_side.2bpp"
-RedFishingRodTiles:   INCBIN "gfx/sprites/red_fishingrod_tiles.2bpp"
 ENDC
+RedFishingRodTiles:   INCBIN "gfx/sprites/red_fishingrod_tiles.2bpp"
 IF DEF(_BLUE)
 RedFishingTilesFront: INCBIN "gfx/sprites/blue_fishing_tile_front.2bpp"
 RedFishingTilesBack:  INCBIN "gfx/sprites/blue_fishing_tile_back.2bpp"
 RedFishingTilesSide:  INCBIN "gfx/sprites/blue_fishing_tile_side.2bpp"
-RedFishingRodTiles:   INCBIN "gfx/sprites/red_fishingrod_tiles.2bpp"
+
 ENDC
 
 INCLUDE "data/animations.asm"
@@ -2729,6 +2725,7 @@ SECTION "bank38", ROMX,BANK[$38]
 
 INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "custom_functions/menu/item_descriptions.asm"
+INCLUDE "custom_functions/func_physical_special_split.asm"
 
 SECTION "bank39", ROMX,BANK[$39]
 

@@ -16,3 +16,9 @@ ICE      EQU $19
 DRAGON   EQU $1A
 DARK     EQU $1B
 FAIRY	 EQU $1C
+STEEL    EQU $1D
+
+; These are for the Physical Special split
+PHYSICAL EQU $00
+SPECIAL  EQU $01
+OTHER_M  EQU $02

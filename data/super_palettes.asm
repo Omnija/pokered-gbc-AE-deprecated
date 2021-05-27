@@ -235,7 +235,6 @@ ENDC
 ; pokemon, trainers, etc.
 
 IF GEN_2_GRAPHICS
-
 ; 0x25: PAL_BULBASAUR
 	RGB 31, 31, 31
 	RGB 12, 31, 11

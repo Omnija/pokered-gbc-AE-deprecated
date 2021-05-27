@@ -25,14 +25,7 @@ GetTrainerInformation::
 	jp BankswitchBack
 .linkBattle
 	ld hl, wTrainerPicPointer
-	ld de, RedPicFront	
-	;Gender Check Display Opposite
-;	ld de,GreenPicFront  
-;	ld a, [wPlayerGender]
-;	and a
-;	jr z, .AreBoy
-;	ld de, RedPicFront
-;.AreBoy
+	ld de, RedPicFront	; VS front pic - any other creates corruption
 	ld [hl], e
 	inc hl
 	ld [hl], d
