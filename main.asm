@@ -2726,6 +2726,7 @@ SECTION "bank38", ROMX,BANK[$38]
 INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "custom_functions/menu/item_descriptions.asm"
 INCLUDE "custom_functions/func_physical_special_split.asm"
+INCLUDE "custom_functions/func_mon_gender.asm"
 
 SECTION "bank39", ROMX,BANK[$39]
 

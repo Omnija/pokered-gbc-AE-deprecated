@@ -513,6 +513,29 @@ wNPCMovementDirections2:: ; cc97
 wSwitchPartyMonTempBuffer:: ; cc97
 ; temporary buffer when swapping party mon data
 	ds 10
+	
+wEnemyWentFirst::
+; 1 = enemy mon attacked before player mon in battle
+; 0 = player mon attacked before enemy mon in battle
+
+; List of move ids that can be re-learend (Move Relearner)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+wRelearnableMoves::
+; List of move ids that can be deleted (Move Deleter)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+wDeletableMoves::
+;joenote - Use the fat block at cca1 as a buffer for  moves
+wMoveBuffer::
+
+wShinyMonFlag::
+; Bit 0 is set if the mon should be Shiny.
+; Bit 1 is set for enemy mon animation, reset for player mon animation
+
+wGenderTemp::
+; temporary buffer used when checking/displaying a Pokemon's gender
+	ds 9
 
 wNumStepsToTake:: ; cca1
 ; used in Pallet Town scripted movement
@@ -2833,17 +2856,6 @@ wVarSprite5::
 	ds 1
 wVarSprite6::
 	ds 1
-
-; List of move ids that can be re-learend (Move Relearner)
-; First byte is the number of moves in this list.
-; List is terminated with $ff
-wRelearnableMoves::
-; List of move ids that can be deleted (Move Deleter)
-; First byte is the number of moves in this list.
-; List is terminated with $ff
-wDeletableMoves::
-;joenote - Use the fat block at cca1 as a buffer for  moves
-wMoveBuffer::
 
 ; unused
     ds 47

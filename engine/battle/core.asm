@@ -1927,6 +1927,7 @@ ELSE
 	call CenterMonName
 	call PlaceString
 ENDC
+	call PrintPlayerMonGender
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies
@@ -1986,6 +1987,7 @@ DrawEnemyHUDAndHPBar:
 	coord hl, 1, 0
 	call CenterMonName
 	call PlaceString
+	call PrintEnemyMonGender
 IF GEN_2_GRAPHICS
 	coord hl, 6, 1
 ELSE
@@ -9019,6 +9021,9 @@ BattleMonPartyAttr:
 	jp AddNTimes
 ENDC
 
+;;;;;;;;;;;;;;;;;
+; Mateo Code
+;;;;;;;;;;;;;;;;;
 ; Determine if a move is Physical, Special, or Status
 ; INPUT: Move ID in register a
 ; OUTPUT: Move Physical/Special/Status type in register a
@@ -9026,4 +9031,40 @@ PhysicalSpecialSplit:
 	ld [wTempMoveID], a
 	callba _PhysicalSpecialSplit
 	ld a, [wTempMoveID]
+	ret
+	
+PrintEnemyMonGender: ; called during battle
+	; get gender
+	ld a, [wEnemyMonSpecies]
+	ld de, wEnemyMonDVs
+	call PrintGenderCommon
+	coord hl, 9, 1
+	ld [hl], a
+	ret
+
+PrintPlayerMonGender: ; called during battle
+	; get gender
+	ld a, [wBattleMonSpecies]
+	ld de, wBattleMonDVs
+	call PrintGenderCommon
+	coord hl, 17, 8
+	ld [hl], a
+	ret
+
+PrintGenderCommon: ; used by both routines
+	ld [wGenderTemp], a
+	callba GetMonGender
+	ld a, [wGenderTemp]
+	and a
+	jr z, .noGender
+	dec a
+	jr z, .male
+	; else female
+	ld a, "♀"
+	ret
+.male
+	ld a, "♂"
+	ret
+.noGender
+	ld a, " "
 	ret
